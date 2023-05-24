@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="Barak-Nadav Diker"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="/Users/barakdiker/install_from_git/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="/Users/barakdiker/install_from_git/reveal.js/dist/theme/moon.css" id="theme"/>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-05-24 Wed 23:52</p>
+</section>
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-org4990065">1. Definition</a></li>
+<li><a href="#/slide-org99527eb">2. Notable quote by google</a></li>
+<li><a href="#/slide-orgf9f1b4d">3. Nice to know</a></li>
+<li><a href="#/slide-org0b5fec0">4. So What&rsquo;s the formula ?</a></li>
+<li><a href="#/slide-org5a44b0c">5. Simple Example</a>
+<ul>
+<li><a href="#/slide-org6ea4758">5.1. After first iteration</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org78d3b18">6. Is there a problem ?</a></li>
+<li><a href="#/slide-orga3dd77d">7. intuition</a></li>
+<li><a href="#/slide-orgcb51260">8. Damping Factor</a></li>
+<li><a href="#/slide-orgd2c43e6">9. Some Notable code</a></li>
+<li><a href="#/slide-org31b1cad">10. Slide 1</a></li>
+<li><a href="#/slide-org76f8118">11. Nice Code Animation</a>
+<ul>
+<li><a href="#/slide-org59e1794">11.1. Added value</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgbdbe23c">12. some equation</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-org4990065">
+<h2 id="org4990065"><span class="section-number-2">1.</span> Definition</h2>
+<p>
+Pagerank is an algorithm used by google search to rank web pages
+in their search engine
+</p>
+
+<p>
+In Simpler words : PageRank is a way of measuring the importance of a website
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org99527eb">
+<h2 id="org99527eb"><span class="section-number-2">2.</span> Notable quote by google</h2>
+<p>
+PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgf9f1b4d">
+<h2 id="orgf9f1b4d"><span class="section-number-2">3.</span> Nice to know</h2>
+<p>
+<b>PageRank and all associated patent are expired !!</b>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0b5fec0">
+<h2 id="org0b5fec0"><span class="section-number-2">4.</span> So What&rsquo;s the formula ?</h2>
+<p>
+The Naive algorithm is the following formula
+</p>
+
+<p>
+\[ PR(u) = \sum_{v \in V-u}\frac{PR(v)}{L(v)} \]
+</p>
+
+<p>
+Where \( L \colon V \to \mathbb{N} \) is number of outbounds links
+and \(PR \colon V \to [0,1] \) is the PageRank of a vertex
+and the initial probability is \( \forall v \in V , PR(v)=\frac{1}{|V|} \)
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5a44b0c">
+<h2 id="org5a44b0c"><span class="section-number-2">5.</span> Simple Example</h2>
+<p>
+Note the following graph
+</p>
+
+<pre class="example" id="orgd6f2d03">
+    PR(A) = 0.25
+    PR(B) = 0.25
+    PR(C) = 0.25
+    PR(D) = 0.25
+</pre>
+
+
+<div id="org00720bb" class="figure">
+<p><img src="simple_example.png" alt="simple_example.png" />
+</p>
+</div>
+
+
+
+</section>
+<section id="slide-org6ea4758">
+<h3 id="org6ea4758"><span class="section-number-3">5.1.</span> After first iteration</h3>
+<p>
+We&rsquo;ll Calculate explicitly for PR(A)
+</p>
+
+<p>
+\[ PR(A)= \frac{PR(B)}{L(B)} + \frac{PR(C)}{L(C)} + \frac{PR(D)}{L(D)} \]
+\[ PR(A)= \frac{0.25}{2} +  \frac{0.25}{1} + \frac{0.25}{3}\]
+</p>
+
+
+<div id="org59a0fbe" class="figure">
+<p><img src="another_example.png" alt="another_example.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org78d3b18">
+<h2 id="org78d3b18"><span class="section-number-2">6.</span> Is there a problem ?</h2>
+<ul>
+<li class="fragment roll-in">If a page has no links to other pages, it becomes a sink and therefore terminates the random surfing process!</li>
+
+</ul>
+<p class="fragment (roll-in)">
+Sound vague .. Why is it a problem ?
+</p>
+
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga3dd77d">
+<h2 id="orga3dd77d"><span class="section-number-2">7.</span> intuition</h2>
+<p>
+In Each iteration every note &ldquo;passes&rdquo; all his probability to it&rsquo;s outbound neighbours
+</p>
+
+<p>
+but if one of the notes doesn&rsquo;t have outbound edges he&rsquo;ll receive probability but the note won&rsquo;t export his probablity
+</p>
+
+<p>
+So the sum of the probability of all nodes \( \sum_{v \in V}PR(v) = 1-PR(v_i) < 1 \) where \( v_i \) is the probability of sink in the previous iteration
+</p>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgcb51260">
+<h2 id="orgcb51260"><span class="section-number-2">8.</span> Damping Factor</h2>
+<p class="fragment (roll-in)">
+solution : if we&rsquo;ll reach a sink we&rsquo;ll jump to a random note (Uniformly)
+by the formula
+\[ PR(p_{i})= \frac{1-d}{N} + d \sum_{p_{j} \in B_{p_i}} \frac{PR(p_j)}{L(p_j)} \]
+Where d is usually 0.85 i.e \( d=0.85 \) and \( B_{p_i} \) is the set containing all pages linking to page u
+and \( L(p_j) \) is the number of links from \( p_j \)
+</p>
+
+<p class="fragment (roll-in)">
+Why will it work ?? how ??
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd2c43e6">
+<h2 id="orgd2c43e6"><span class="section-number-2">9.</span> Some Notable code</h2>
+<div class="org-src-container">
+
+<pre  class="src src-c++"   data-line-numbers='1|3'><code trim><span style="color: #8f3f71;">int</span> <span style="color: #b57614;">main</span><span style="color: #076678;">()</span>
+<span style="color: #076678;">{</span>
+  cout &lt;&lt; <span style="color: #79740e;">"Hello"</span> &lt;&lt; endl;
+<span style="color: #076678;">}</span>
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org31b1cad">
+<h2 id="org31b1cad"><span class="section-number-2">10.</span> Slide 1</h2>
+<ul>
+<li class="fragment roll-in">List item 1</li>
+
+</ul>
+
+
+<div id="orgd0339aa" class="figure">
+<p><img src="test1.png" alt="test1.png" />
+</p>
+</div>
+
+<ul>
+<li class="fragment roll-in">List item 2</li>
+
+</ul>
+
+
+<div id="org9108e3f" class="figure">
+<p><img src="test2.png" alt="test2.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org76f8118" data-auto-animate>
+<h2 id="org76f8118"><span class="section-number-2">11.</span> Nice Code Animation</h2>
+<div class="org-src-container">
+
+<pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
+</code></pre>
+</div>
+
+
+</section>
+<section id="slide-org59e1794" data-auto-animate>
+<h3 id="org59e1794"><span class="section-number-3">11.1.</span> Added value</h3>
+<div class="org-src-container">
+
+<pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
+  <span style="color: #9d0006;">let</span> <span style="color: #076678;">value</span> = <span style="color: #8f3f71; font-weight: bold;">2</span>
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbdbe23c">
+<h2 id="orgbdbe23c"><span class="section-number-2">12.</span> some equation</h2>
+<p>
+\[ \sin(x) = \frac{1}{n} \]
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="/Users/barakdiker/install_from_git/reveal.js/dist/reveal.js"></script>
+<script src="/Users/barakdiker/install_from_git/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="/Users/barakdiker/install_from_git/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="/Users/barakdiker/install_from_git/reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown, RevealZoom, RevealNotes]
+});
+
+</script>
+</body>
+</html>

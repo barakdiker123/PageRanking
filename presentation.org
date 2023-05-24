@@ -1,0 +1,193 @@
+
+
+* Definition
+Pagerank is an algorithm used by google search to rank web pages
+in their search engine
+
+In Simpler words : PageRank is a way of measuring the importance of a website
+
+* Notable quote by google
+PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
+* Nice to know
+*PageRank and all associated patent are expired !!*
+
+* So What's the formula ?
+The Naive algorithm is the following formula
+
+\[ PR(u) = \sum_{v \in V-u}\frac{PR(v)}{L(v)} \]
+
+Where \( L \colon V \to \mathbb{N} \) is number of outbounds links
+and \(PR \colon V \to [0,1] \) is the PageRank of a vertex
+and the initial probability is \( \forall v \in V , PR(v)=\frac{1}{|V|} \)
+
+
+
+* Simple Example
+
+Note the following graph
+
+#+begin_example
+    PR(A) = 0.25
+    PR(B) = 0.25
+    PR(C) = 0.25
+    PR(D) = 0.25
+#+end_example
+
+#+BEGIN_SRC dot :file simple_example.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.25"]
+2 [label="B 0.25"]
+3 [label="C 0.25"]
+4 [label="D 0.25"]
+2->1;
+2->3;
+2->4;
+3->1;
+4->1;
+4->2;
+4->3;
+1->4;
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:simple_example.png]]
+
+
+
+** After first iteration
+We'll Calculate explicitly for PR(A)
+
+\[ PR(A)= \frac{PR(B)}{L(B)} + \frac{PR(C)}{L(C)} + \frac{PR(D)}{L(D)} \]
+\[ PR(A)= \frac{0.25}{2} +  \frac{0.25}{1} + \frac{0.25}{3}\]
+
+  #+RESULTS:
+  #+begin_export latex
+  #+end_export
+
+
+#+BEGIN_SRC dot :file another_example.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.4583 "]
+2 [label="B 0.083"]
+3 [label="C 0.20833"]
+4 [label="D 0.25"]
+2->1;
+2->3;
+2->4;
+3->1;
+4->1;
+4->2;
+4->3;
+1->4;
+
+
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:another_example.png]]
+
+* Is there a problem ?
+
+#+ATTR_REVEAL: :frag (roll-in)
+- If a page has no links to other pages, it becomes a sink and therefore terminates the random surfing process!
+#+ATTR_REVEAL: :frag (roll-in)
+Sound vague .. Why is it a problem ?
+
+
+
+
+
+* intuition
+In Each iteration every note "passes" all his probability to it's outbound neighbours
+
+but if one of the notes doesn't have outbound edges he'll receive probability but the note won't export his probablity
+
+So the sum of the probability of all nodes \( \sum_{v \in V}PR(v) = 1-PR(v_i) < 1 \) where \( v_i \) is the probability of sink in the previous iteration
+
+
+
+
+* Damping Factor
+#+ATTR_REVEAL: :frag (roll-in)
+solution : if we'll reach a sink we'll jump to a random note (Uniformly)
+by the formula
+\[ PR(p_{i})= \frac{1-d}{N} + d \sum_{p_{j} \in B_{p_i}} \frac{PR(p_j)}{L(p_j)} \]
+Where d is usually 0.85 i.e \( d=0.85 \) and \( B_{p_i} \) is the set containing all pages linking to page u
+and \( L(p_j) \) is the number of links from \( p_j \)
+
+#+ATTR_REVEAL: :frag (roll-in)
+Why will it work ?? how ??
+
+* Some Notable code
+
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+int main()
+{
+  cout << "Hello" << endl;
+}
+#+END_SRC
+* Slide 1
+#+ATTR_REVEAL: :frag (roll-in)
+- List item 1
+
+#+ATTR_REVEAL: :frag (roll-in)
+#+BEGIN_SRC dot :file test1.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1->2;
+2->3;
+3->1 [label="bleh!", fontcolor=red];
+4->1;
+}
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (roll-in)
+#+RESULTS: [[file:test1.png]]
+
+#+ATTR_REVEAL: :frag (roll-in)
+- List item 2
+
+#+ATTR_REVEAL: :frag (roll-in)
+#+BEGIN_SRC dot :file test2.png
+graph pres {
+rankdir=LR;
+node [shape=record];
+1--2--3--4;
+}
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (roll-in)
+#+RESULTS: file:test2.png
+
+* Nice Code Animation
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+
+#+ATTR_REVEAL: :data_id foo
+#+begin_src js
+  let index = 1
+#+end_src
+
+
+** Added value
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+
+#+ATTR_REVEAL: :data_id foo
+#+begin_src js
+  let index = 1
+  let value = 2
+#+end_src
+
+* some equation
+\[ \sin(x) = \frac{1}{n} \]
