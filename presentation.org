@@ -112,6 +112,35 @@ So the sum of the probability of all nodes \( \sum_{v \in V}PR(v) = 1-PR(v_i) < 
 
 
 
+* Example
+Example with sink
+#+BEGIN_SRC dot :file sink_problem1.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.333 "]
+2 [label="B 0.333 "]
+3 [label="C 0.333 "]
+2->1;
+3->1;
+}
+#+END_SRC
+
+
+** in the first iteration
+Note that node B and node C passes all it's probability to node A
+And node A passes 0.333 to nobody !
+#+BEGIN_SRC dot :file sink_problem2.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.666 "]
+2 [label="B 0 "]
+3 [label="C 0 "]
+2->1;
+3->1;
+}
+#+END_SRC
 
 * Damping Factor
 #+ATTR_REVEAL: :frag (roll-in)
@@ -123,6 +152,9 @@ and \( L(p_j) \) is the number of links from \( p_j \)
 
 #+ATTR_REVEAL: :frag (roll-in)
 Why will it work ?? how ??
+
+
+
 
 * Some Notable code
 

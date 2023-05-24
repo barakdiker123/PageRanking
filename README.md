@@ -20,4 +20,7 @@ firefox presentation.html
 * Page Rank
 * Markov chains 
 
+## References
+* [Nice article](https://math.uchicago.edu/~may/VIGRE/VIGRE2007/REUPapers/FINALFULL/Casarotto.pdf)
+* [Some inspiring presentation](https://www2.math.upenn.edu/~kazdan/312F12/JJ/MarkovChains/markov_google.pdf)
 `
