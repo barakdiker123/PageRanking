@@ -13,49 +13,59 @@
 
 <link rel="stylesheet" href="/Users/barakdiker/install_from_git/reveal.js/dist/theme/moon.css" id="theme"/>
 
+<link rel="stylesheet" href="./local.css"/>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-05-25 Thu 00:24</p>
+<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-05-25 Thu 01:39</p>
 </section>
 <section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org389b43f">1. Definition</a></li>
-<li><a href="#/slide-orgafc11af">2. Notable quote by google</a></li>
-<li><a href="#/slide-org53fd5f1">3. Nice to know</a></li>
-<li><a href="#/slide-orgd49f6a4">4. So What&rsquo;s the formula ?</a></li>
-<li><a href="#/slide-org851fa33">5. Simple Example</a>
+<li><a href="#/slide-orgc6d4bb8">1. Definition</a></li>
+<li><a href="#/slide-org4a99612">2. Notable quote by google</a></li>
+<li><a href="#/slide-org18dabfd">3. Nice to know</a></li>
+<li><a href="#/slide-org559d6a4">4. So What&rsquo;s the formula ?</a></li>
+<li><a href="#/slide-orgecaa220">5. Simple Example</a>
 <ul>
-<li><a href="#/slide-org0c3fb2b">5.1. After first iteration</a></li>
+<li><a href="#/slide-orgafa5528">5.1. After first iteration</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org80c0082">6. Is there a problem ?</a></li>
-<li><a href="#/slide-orgf554609">7. intuition</a></li>
-<li><a href="#/slide-org4020b4b">8. Example</a>
+<li><a href="#/slide-org87be71f">6. Is there a problem ?</a></li>
+<li><a href="#/slide-org62dad4e">7. intuition</a></li>
+<li><a href="#/slide-org246d753">8. Example</a>
 <ul>
-<li><a href="#/slide-orgba79efd">8.1. in the first iteration</a></li>
+<li><a href="#/slide-org30f9406">8.1. in the first iteration</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgaf153f7">9. Damping Factor</a></li>
-<li><a href="#/slide-org5487f5c">10. Some Notable code</a></li>
-<li><a href="#/slide-org27575c9">11. Slide 1</a></li>
-<li><a href="#/slide-orge4b0012">12. Nice Code Animation</a>
+<li><a href="#/slide-orgb27d32f">9. Damping Factor</a>
 <ul>
-<li><a href="#/slide-orgc8a964a">12.1. Added value</a></li>
+<li><a href="#/slide-orgf0e45d8">9.1. A more general notation</a></li>
+<li><a href="#/slide-orgcfedbfa">9.2. The full equation</a></li>
+<li><a href="#/slide-orgdb34c8c">9.3. How fast does the solution converges ?</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org937ad92">13. some equation</a></li>
+<li><a href="#/slide-org3b45174">10. To delete</a></li>
+<li><a href="#/slide-org110a5d6">11. To delete</a></li>
+<li><a href="#/slide-orgc7e77ba">12. Some Notable code</a></li>
+<li><a href="#/slide-org011702d">13. Slide 1</a></li>
+<li><a href="#/slide-orgbb5976d">14. Nice Code Animation</a>
+<ul>
+<li><a href="#/slide-orgcfb2752">14.1. Added value</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org911cf44">15. some equation</a></li>
 </ul>
 </div>
 </div>
 </section>
+
 <section>
-<section id="slide-org389b43f">
-<h2 id="org389b43f"><span class="section-number-2">1.</span> Definition</h2>
+<section id="slide-orgc6d4bb8">
+<h2 id="orgc6d4bb8"><span class="section-number-2">1.</span> Definition</h2>
 <p>
 Pagerank is an algorithm used by google search to rank web pages
 in their search engine
@@ -68,16 +78,16 @@ In Simpler words : PageRank is a way of measuring the importance of a website
 </section>
 </section>
 <section>
-<section id="slide-orgafc11af">
-<h2 id="orgafc11af"><span class="section-number-2">2.</span> Notable quote by google</h2>
+<section id="slide-org4a99612">
+<h2 id="org4a99612"><span class="section-number-2">2.</span> Notable quote by google</h2>
 <p>
 PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org53fd5f1">
-<h2 id="org53fd5f1"><span class="section-number-2">3.</span> Nice to know</h2>
+<section id="slide-org18dabfd">
+<h2 id="org18dabfd"><span class="section-number-2">3.</span> Nice to know</h2>
 <p>
 <b>PageRank and all associated patent are expired !!</b>
 </p>
@@ -85,8 +95,8 @@ PageRank works by counting the number and quality of links to a page to determin
 </section>
 </section>
 <section>
-<section id="slide-orgd49f6a4">
-<h2 id="orgd49f6a4"><span class="section-number-2">4.</span> So What&rsquo;s the formula ?</h2>
+<section id="slide-org559d6a4">
+<h2 id="org559d6a4"><span class="section-number-2">4.</span> So What&rsquo;s the formula ?</h2>
 <p>
 The Naive algorithm is the following formula
 </p>
@@ -106,13 +116,13 @@ and the initial probability is \( \forall v \in V , PR(v)=\frac{1}{|V|} \)
 </section>
 </section>
 <section>
-<section id="slide-org851fa33">
-<h2 id="org851fa33"><span class="section-number-2">5.</span> Simple Example</h2>
+<section id="slide-orgecaa220">
+<h2 id="orgecaa220"><span class="section-number-2">5.</span> Simple Example</h2>
 <p>
 Note the following graph
 </p>
 
-<pre class="example" id="orgcf1c0c4">
+<pre class="example" id="orga92e951">
     PR(A) = 0.25
     PR(B) = 0.25
     PR(C) = 0.25
@@ -120,7 +130,7 @@ Note the following graph
 </pre>
 
 
-<div id="orgc6221e1" class="figure">
+<div id="orgccff325" class="figure">
 <p><img src="simple_example.png" alt="simple_example.png" />
 </p>
 </div>
@@ -128,8 +138,8 @@ Note the following graph
 
 
 </section>
-<section id="slide-org0c3fb2b">
-<h3 id="org0c3fb2b"><span class="section-number-3">5.1.</span> After first iteration</h3>
+<section id="slide-orgafa5528">
+<h3 id="orgafa5528"><span class="section-number-3">5.1.</span> After first iteration</h3>
 <p>
 We&rsquo;ll Calculate explicitly for PR(A)
 </p>
@@ -140,7 +150,7 @@ We&rsquo;ll Calculate explicitly for PR(A)
 </p>
 
 
-<div id="org7d37452" class="figure">
+<div id="org1d18a11" class="figure">
 <p><img src="another_example.png" alt="another_example.png" />
 </p>
 </div>
@@ -148,8 +158,8 @@ We&rsquo;ll Calculate explicitly for PR(A)
 </section>
 </section>
 <section>
-<section id="slide-org80c0082">
-<h2 id="org80c0082"><span class="section-number-2">6.</span> Is there a problem ?</h2>
+<section id="slide-org87be71f">
+<h2 id="org87be71f"><span class="section-number-2">6.</span> Is there a problem ?</h2>
 <ul>
 <li class="fragment roll-in">If a page has no links to other pages, it becomes a sink and therefore terminates the random surfing process!</li>
 
@@ -165,8 +175,8 @@ Sound vague .. Why is it a problem ?
 </section>
 </section>
 <section>
-<section id="slide-orgf554609">
-<h2 id="orgf554609"><span class="section-number-2">7.</span> intuition</h2>
+<section id="slide-org62dad4e">
+<h2 id="org62dad4e"><span class="section-number-2">7.</span> intuition</h2>
 <p>
 In Each iteration every note &ldquo;passes&rdquo; all his probability to it&rsquo;s outbound neighbours
 </p>
@@ -184,27 +194,27 @@ So the sum of the probability of all nodes \( \sum_{v \in V}PR(v) = 1-PR(v_i) < 
 </section>
 </section>
 <section>
-<section id="slide-org4020b4b">
-<h2 id="org4020b4b"><span class="section-number-2">8.</span> Example</h2>
+<section id="slide-org246d753">
+<h2 id="org246d753"><span class="section-number-2">8.</span> Example</h2>
 <p>
 Example with sink
 </p>
 
-<div id="orge2ad471" class="figure">
+<div id="orgeba879b" class="figure">
 <p><img src="sink_problem1.png" alt="sink_problem1.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-orgba79efd">
-<h3 id="orgba79efd"><span class="section-number-3">8.1.</span> in the first iteration</h3>
+<section id="slide-org30f9406">
+<h3 id="org30f9406"><span class="section-number-3">8.1.</span> in the first iteration</h3>
 <p>
 Note that node B and node C passes all it&rsquo;s probability to node A
 And node A passes 0.333 to nobody !
 </p>
 
-<div id="org1a961ea" class="figure">
+<div id="org4f7bddd" class="figure">
 <p><img src="sink_problem2.png" alt="sink_problem2.png" />
 </p>
 </div>
@@ -212,8 +222,8 @@ And node A passes 0.333 to nobody !
 </section>
 </section>
 <section>
-<section id="slide-orgaf153f7">
-<h2 id="orgaf153f7"><span class="section-number-2">9.</span> Damping Factor</h2>
+<section id="slide-orgb27d32f">
+<h2 id="orgb27d32f"><span class="section-number-2">9.</span> Damping Factor</h2>
 <p class="fragment (roll-in)">
 solution : if we&rsquo;ll reach a sink we&rsquo;ll jump to a random note (Uniformly)
 by the formula
@@ -230,10 +240,128 @@ Why will it work ?? how ??
 
 
 </section>
+<section id="slide-orgf0e45d8">
+<h3 id="orgf0e45d8"><span class="section-number-3">9.1.</span> A more general notation</h3>
+<p>
+note that we can write the formula more compactly like so
+</p>
+
+<div>
+\begin{equation}
+\mathbf{R} =
+\begin{bmatrix}
+PR(p_1) \\
+PR(p_2) \\
+\vdots \\
+PR(p_N)
+\end{bmatrix}
+\end{equation}
+
+</div>
+
+<p>
+where &rsquo;&rsquo;&rsquo;R&rsquo;&rsquo;&rsquo; is the solution of the equation
+</p>
+</section>
+<section id="slide-orgcfedbfa">
+<h3 id="orgcfedbfa"><span class="section-number-3">9.2.</span> The full equation</h3>
+<div>
+\begin{equation}
+\mathbf{R} =
+\begin{bmatrix}
+{(1-d)/ N} \\
+{(1-d) / N} \\
+\vdots \\
+{(1-d) / N}
+\end{bmatrix}
++ d
+\begin{bmatrix}
+\ell(p_1,p_1) & \ell(p_1,p_2) & \cdots & \ell(p_1,p_N) \\
+\ell(p_2,p_1) & \ddots &  & \vdots \\
+\vdots & & \ell(p_i,p_j) & \\
+\ell(p_N,p_1) & \cdots & & \ell(p_N,p_N)
+\end{bmatrix}
+\mathbf{R}
+\end{equation}
+
+</div>
+<p>
+where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
+</p>
+<div>
+\begin{equation} \sum_{i = 1}^N \ell(p_i,p_j) = 1 \end{equation}
+
+</div>
+
+
+</section>
+<section id="slide-orgdb34c8c">
+<h3 id="orgdb34c8c"><span class="section-number-3">9.3.</span> How fast does the solution converges ?</h3>
+<p class="fragment (roll-in)">
+Because of the large eigengap of the modified adjacency matrix above, the values of the PageRank eigenvector can be approximated to within a high degree of accuracy within only a &ldquo;few&rdquo; iterations.
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Eigenvalue_perturbation">Davis–Kahan theorem</a>
+</p>
+
+<p class="fragment (roll-in)">
+But What is &ldquo;few&rdquo; ?
+</p>
+
+<p class="fragment (roll-in)">
+log(n)
+</p>
+
+</section>
 </section>
 <section>
-<section id="slide-org5487f5c">
-<h2 id="org5487f5c"><span class="section-number-2">10.</span> Some Notable code</h2>
+<section id="slide-org3b45174">
+<h2 id="org3b45174"><span class="section-number-2">10.</span> To delete</h2>
+<div class="column" style="float:left; width: 50%">
+<p>
+Column 1
+</p>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+<p>
+Column 2
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org110a5d6">
+<h2 id="org110a5d6"><span class="section-number-2">11.</span> To delete</h2>
+<div id="box-container">
+<div id="box-1">
+<p>
+Box 1
+</p>
+</div>
+
+<div id="box-2">
+<p>
+Box 2
+</p>
+</div>
+
+<div id="box-3">
+<p>
+Box 3
+</p>
+</div>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc7e77ba">
+<h2 id="orgc7e77ba"><span class="section-number-2">12.</span> Some Notable code</h2>
 <div class="org-src-container">
 
 <pre  class="src src-c++"   data-line-numbers='1|3'><code trim><span style="color: #8f3f71;">int</span> <span style="color: #b57614;">main</span><span style="color: #076678;">()</span>
@@ -245,15 +373,15 @@ Why will it work ?? how ??
 </section>
 </section>
 <section>
-<section id="slide-org27575c9">
-<h2 id="org27575c9"><span class="section-number-2">11.</span> Slide 1</h2>
+<section id="slide-org011702d">
+<h2 id="org011702d"><span class="section-number-2">13.</span> Slide 1</h2>
 <ul>
 <li class="fragment roll-in">List item 1</li>
 
 </ul>
 
 
-<div id="org59c5c8f" class="figure">
+<div id="org33a9fdd" class="figure">
 <p><img src="test1.png" alt="test1.png" />
 </p>
 </div>
@@ -264,7 +392,7 @@ Why will it work ?? how ??
 </ul>
 
 
-<div id="org3cbd6b5" class="figure">
+<div id="orgf292d1d" class="figure">
 <p><img src="test2.png" alt="test2.png" />
 </p>
 </div>
@@ -272,8 +400,8 @@ Why will it work ?? how ??
 </section>
 </section>
 <section>
-<section id="slide-orge4b0012" data-auto-animate>
-<h2 id="orge4b0012"><span class="section-number-2">12.</span> Nice Code Animation</h2>
+<section id="slide-orgbb5976d" data-auto-animate>
+<h2 id="orgbb5976d"><span class="section-number-2">14.</span> Nice Code Animation</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
@@ -282,8 +410,8 @@ Why will it work ?? how ??
 
 
 </section>
-<section id="slide-orgc8a964a" data-auto-animate>
-<h3 id="orgc8a964a"><span class="section-number-3">12.1.</span> Added value</h3>
+<section id="slide-orgcfb2752" data-auto-animate>
+<h3 id="orgcfb2752"><span class="section-number-3">14.1.</span> Added value</h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
@@ -294,8 +422,8 @@ Why will it work ?? how ??
 </section>
 </section>
 <section>
-<section id="slide-org937ad92">
-<h2 id="org937ad92"><span class="section-number-2">13.</span> some equation</h2>
+<section id="slide-org911cf44">
+<h2 id="org911cf44"><span class="section-number-2">15.</span> some equation</h2>
 <p>
 \[ \sin(x) = \frac{1}{n} \]
 </p>
