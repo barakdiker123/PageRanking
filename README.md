@@ -1,7 +1,10 @@
 # PageRanking Algorithm 
 Have you ever wonder how the google search algorithm works ?? 
+
 The google search engine is based on a paper written by sergey brin and Larry Page 
-which employ linear algebra tools search as diagonalization and probablity to Rank The pages of the World Wide Web 
+
+which employ linear algebra tools search as diagonalization and probablity to Rank The pages of the World Wide Web ,
+
 WWW for short 
 
 This git repo contain some cool animation and a 15 minutes 
