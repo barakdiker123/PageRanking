@@ -23,4 +23,5 @@ firefox presentation.html
 ## References
 * [Nice article](https://math.uchicago.edu/~may/VIGRE/VIGRE2007/REUPapers/FINALFULL/Casarotto.pdf)
 * [Some inspiring presentation](https://www2.math.upenn.edu/~kazdan/312F12/JJ/MarkovChains/markov_google.pdf)
-`
+* [Relation Between Chess scoring and Google pageranking ](https://arxiv.org/pdf/2210.17300.pdf)
+This paper was aactually published by Edmund Landau at 1895 

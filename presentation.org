@@ -11,10 +11,12 @@ PageRank works by counting the number and quality of links to a page to determin
 * Nice to know
 *PageRank and all associated patent are expired !!*
 
+
+
 * So What's the formula ?
 The Naive algorithm is the following formula
 
-\[ PR(u) = \sum_{v \in V-u}\frac{PR(v)}{L(v)} \]
+\[ PR(u) = \sum_{v \in B_u}\frac{PR(v)}{L(v)} \]
 
 Where \( L \colon V \to \mathbb{N} \) is number of outbounds links
 and \(PR \colon V \to [0,1] \) is the PageRank of a vertex
@@ -33,7 +35,7 @@ Note the following graph
     PR(D) = 0.25
 #+end_example
 
-#+BEGIN_SRC dot :file simple_example.png
+#+BEGIN_SRC dot :file simple_example1.png
 digraph auth {
 rankdir=LR;
 node [shape=record];
@@ -43,7 +45,6 @@ node [shape=record];
 4 [label="D 0.25"]
 2->1;
 2->3;
-2->4;
 3->1;
 4->1;
 4->2;
@@ -53,7 +54,7 @@ node [shape=record];
 #+END_SRC
 
 #+RESULTS:
-[[file:simple_example.png]]
+[[file:simple_example1.png]]
 
 
 
@@ -68,7 +69,7 @@ We'll Calculate explicitly for PR(A)
   #+end_export
 
 
-#+BEGIN_SRC dot :file another_example.png
+#+BEGIN_SRC dot :file another_example1.png
 digraph auth {
 rankdir=LR;
 node [shape=record];
@@ -78,7 +79,6 @@ node [shape=record];
 4 [label="D 0.25"]
 2->1;
 2->3;
-2->4;
 3->1;
 4->1;
 4->2;
@@ -90,7 +90,7 @@ node [shape=record];
 #+END_SRC
 
 #+RESULTS:
-[[file:another_example.png]]
+[[file:another_example1.png]]
 
 * Is there a problem ?
 
@@ -142,6 +142,34 @@ node [shape=record];
 }
 #+END_SRC
 
+* Another Problem
+Another Problem might occur if we have inside our graph infinite cycle
+
+like in the following graph
+
+All the PageRank would go into node a and node b
+
+#+BEGIN_SRC dot :file inifinite_cycle.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A" color="red"]
+2 [label="B" color="red"]
+3 [label="C"]
+4 [label="C"]
+2->1 [label="1"];
+1->2 [label="1"];
+3->1 [label="0.5"];
+4->2[label="0.5"];
+4->3[label="0.5"];
+3->4[label="0.5"];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:inifinite_cycle.png]]
+
+
 * Damping Factor
 #+ATTR_REVEAL: :frag (roll-in)
 solution : if we'll reach a sink we'll jump to a random note (Uniformly)
@@ -156,7 +184,8 @@ Why will it work ?? how ??
 
 
 
-** A more general notation
+
+* A more general notation
 note that we can write the formula more compactly like so
 
 \begin{equation}
@@ -181,7 +210,7 @@ where '''R''' is the solution of the equation
 \vdots \\
 {(1-d) / N}
 \end{bmatrix}
-+ d
+\\ + d
 \begin{bmatrix}
 \ell(p_1,p_1) & \ell(p_1,p_2) & \cdots & \ell(p_1,p_N) \\
 \ell(p_2,p_1) & \ddots &  & \vdots \\
@@ -190,11 +219,210 @@ where '''R''' is the solution of the equation
 \end{bmatrix}
 \mathbf{R}
 \end{equation}
+** Continue
 where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
 \begin{equation} \sum_{i = 1}^N \ell(p_i,p_j) = 1 \end{equation}
 
 
-** How fast does the solution converges ?
+
+** The Algorithm
+If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-stochastic and \( \mathbf{R} \) is a probability distribution
+- \(\|\mathbf{R}\|=1, \mathbf{E}\mathbf{R}=\mathbf{1} \) where \( \mathbf{E} \) is matrix of all ones
+
+\[ \mathbf{R} = \left( d \mathcal{M} + \frac{1-d}{N} \mathbf{E} \right)\mathbf{R} =: \widehat{ \mathcal{M}} \mathbf{R} \]
+
+** Continue
+Hence PageRank  \( \mathbf{R} \) is the principal eigenvector of \( \widehat{\mathcal{M}} \). A fast and easy way to compute this is using the power method: starting with an arbitrary vector  x(0), the operator \( \widehat{\mathcal{M}} \) is applied in succession, i.e.,
+
+    \[ x(t+1) = \widehat{\mathcal{M}} x(t), \]
+
+until
+
+    \[ |x(t+1) - x(t)| <  \epsilon \]
+
+
+
+** Simple Implementation
+#+BEGIN_SRC python
+import numpy as np
+def pagerank(M, num_iterations: int = 100, d: float = 0.85):
+    N = M.shape[1]
+    v = np.ones(N) / N
+    M_hat = (d * M + (1 - d) / N)
+    for i in range(num_iterations):
+        v = M_hat @ v
+    return v
+M = np.array([[0  , 0, 0 , 0, 1],
+              [0.5, 0, 0 , 0, 0],
+              [0.5, 0, 0 , 0, 0],
+              [0  , 1,0.5, 0, 0],
+              [0  , 0,0.5, 1, 0]])
+v = pagerank(M, 100, 0.85)
+print(v)
+#+end_src
+
+#+RESULTS:
+: None
+
+* Markov Chain
+Let's be more formal !
+Given a Graph and initial probability vector \( \pi _0 \in \mathbb{R}^n \)  where n is the number of vertaces ,
+Define the Matrix P to be \( [P]_{ij}  \) the probability of going from node i to node j
+Define \( \forall j \in [0,n]\bigcap \mathbb{N} , \vec \pi _{n+1} (j) = \vec \pi _n \cdot \vec P_{i,j} \)
+** More definition
+we want to find a unique stationary
+distribution \( \lim\limits_{n\to \infty} \pi _n = \pi \) and Rank the Web Pages via that unique stationary distribution !
+
+** Example
+Observe the following graph
+\[ \pi _{n+1}(0) = \pi _n \cdot P(0,0) + \pi _n \cdot P(1,0) +\pi _n \cdot P(2,0) \\ +\pi _n \cdot P(3,0) + \pi _n \cdot P(4,0) \]
+
+#+BEGIN_SRC dot :file markov_simple_calc.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="1"]
+2 [label="2"]
+3 [label="3"]
+4 [label="4"]
+0 [label="0"]
+3->0 [color="red"];
+2->0 [color="red"];
+4->0[color="red"];
+1->2;
+2->1;
+2->3;
+0->3;
+3->4;
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:markov_simple_calc.png]]
+
+
+
+* Serious questions
+- Is there unique stationary distribution ?
+  Certainly it would be hard to evaluate web pages if there are couple of stationary distribution
+- Does every initial distribution converges to the stationary one ?
+  if so how to pick initial distribution ?
+#+ATTR_REVEAL: :frag (roll-in)
+serious question ... maybe mathematics could help us ??
+
+* First question
+Can you define a Markov chain with multiple stationary distributions ?
+
+#+ATTR_REVEAL: :frag (roll-in)
+Think of markov chain with only 2 states ...
+
+** The Answer
+This graph has multiple stationary solutions
+
+#+BEGIN_SRC dot :file multi_stationary_distribution1.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.333 "]
+2 [label="B 0.666 "]
+2->1 [label="1"];
+1->2 [label="1"];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:multi_stationary_distribution1.png]]
+
+#+BEGIN_SRC dot :file multi_stationary_distribution2.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.2 "]
+2 [label="B 0.8 "]
+2->1 [label="1"];
+1->2 [label="1"];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:multi_stationary_distribution2.png]]
+
+
+
+** Another Example
+#+ATTR_REVEAL: :frag (roll-in)
+Can we Think of another example ??
+#+ATTR_REVEAL: :frag (roll-in)
+Graph that isn't strongly connect .i.e exists 2 nodes such that we cannot create a path from the former to the latter
+
+#+ATTR_REVEAL: :frag (roll-in)
+interestingly , That is one of the definition of "Reducible Markov Chain"
+
+#+ATTR_REVEAL: :frag (roll-in)
+Let's see the example !
+
+
+
+** Visulaize
+There isn't a path between node 0 into node 1 i.e this graph isn't reducible
+So again the stationary solution isn't unique !!
+
+#+BEGIN_SRC dot :file not_strongly_connected.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.2 "]
+2 [label="B 0.8 "]
+2->2 [label="1"];
+1->1 [label="1"];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:not_strongly_connected.png]]
+
+** Conclusion
+The first graph was periodic markov chain
+and the second graph was reducible markov chain
+
+apparently The answer is yes to the 2 previous question if
+the graph is aperiodic and irreducible markov chain
+
+
+** Theorem
+if graph is Irreducible markov chain i.e all state are reachable \( \rightarrow \) there is unique stationary distribution
+
+#+ATTR_REVEAL: :frag (roll-in)
+Note , The first example has a unique stationary distribution (0.5 0.5)
+All other solutions aren't stationary for example (0.3 0.7) would oscilate between them
+
+
+* The second question
+Does every initial distribution converge to the stationary one ?
+
+#+ATTR_REVEAL: :frag (roll-in)
+Clarification ! for all initial distribution we want to converge to *the* stationary one
+
+#+ATTR_REVEAL: :frag (roll-in)
+Give me an irreducible markov chain where the stationary distribution does not converge
+#+ATTR_REVEAL: :frag (roll-in)
+we have already counter-example , so what else we need to assume on the graph ?
+
+
+* Periodic Markov Chain
+- Must be an irreducible markov chain
+- User visits states in regular interval (period) > 1
+  (There is a better definition)
+So Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
+
+If no such period exists > 1 , then we said that the graph is Aperiodic Markov Chain
+
+* Ergodic Theorem
+For Irreducible and aperiodic markov chains:
+1. A unique stationary distribution \( \pi \) exists
+2. All initial distribution \( \pi _0 \) converges to that unique stationary distribution \( \pi \)
+
+* How fast does the solution converges ?
 #+ATTR_REVEAL: :frag (roll-in)
 Because of the large eigengap of the modified adjacency matrix above, the values of the PageRank eigenvector can be approximated to within a high degree of accuracy within only a "few" iterations.
 
@@ -205,6 +433,9 @@ But What is "few" ?
 
 #+ATTR_REVEAL: :frag (roll-in)
 log(n)
+
+* The End
+End !
 
 * To delete
 #+REVEAL_HTML: <div class="column" style="float:left; width: 50%">
