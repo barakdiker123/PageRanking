@@ -4,6 +4,8 @@ This git repo contain some cool animation and a 15 minutes
 presentation about the Pageranking algo 
 
 I've also attached some paper written by google founders Sergey Brin and Larry Page 
+![](show_demo/show_presentation.png)
+![](show_demo/show_presentation2.png)
 ![](simple_example.png)
 
 ## How to view ? 
