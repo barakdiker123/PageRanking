@@ -2,15 +2,12 @@
 Have you ever wonder how the google search algorithm works ?? 
 
 The google search engine is based on a paper written by sergey brin and Larry Page 
-
-which employ linear algebra tools search as diagonalization and probablity to Rank The pages of the World Wide Web ,
-
-WWW for short 
+which employ linear algebra and probablity to Rank The pages of the World Wide Web ! 
 
 This git repo contain some cool animation and a 15 minutes 
 presentation about the google's Pageranking algo 
 
-I've also attached some paper written by google founders Sergey Brin and Larry Page 
+I've also attached some inspiring papers on the bottom  
 
 This topic is also heavily related to Chess Scoring but sadly I didn't finished that slide 
 so I'll talk about PageRanking ,Markov Chain ,Argodic Theorem ,Perron Frobenius Theorem 
