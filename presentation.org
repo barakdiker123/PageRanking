@@ -1,4 +1,8 @@
 #+REVEAL_EXTRA_CSS: ./local.css
+#+OPTIONS: reveal_single_file:t
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+
 
 * Definition
 Pagerank is an algorithm used by google search to rank web pages
