@@ -160,7 +160,7 @@ node [shape=record];
 1 [label="A" color="red"]
 2 [label="B" color="red"]
 3 [label="C"]
-4 [label="C"]
+4 [label="D"]
 2->1 [label="1"];
 1->2 [label="1"];
 3->1 [label="0.5"];
@@ -174,112 +174,17 @@ node [shape=record];
 [[file:inifinite_cycle.png]]
 
 
-* Damping Factor
-#+ATTR_REVEAL: :frag (roll-in)
-solution : if we'll reach a sink we'll jump to a random note (Uniformly)
-by the formula
-\[ PR(p_{i})= \frac{1-d}{N} + d \sum_{p_{j} \in B_{p_i}} \frac{PR(p_j)}{L(p_j)} \]
-Where d is usually 0.85 i.e \( d=0.85 \) and \( B_{p_i} \) is the set containing all pages linking to page u
-and \( L(p_j) \) is the number of links from \( p_j \)
-
-#+ATTR_REVEAL: :frag (roll-in)
-Why will it work ?? how ??
-
-
-
-
-
-* A more general notation
-note that we can write the formula more compactly like so
-
-\begin{equation}
-\mathbf{R} =
-\begin{bmatrix}
-PR(p_1) \\
-PR(p_2) \\
-\vdots \\
-PR(p_N)
-\end{bmatrix}
-\end{equation}
-
-where '''R''' is the solution of the equation
-** The full equation
-
-
-\begin{equation}
-\mathbf{R} =
-\begin{bmatrix}
-{(1-d)/ N} \\
-{(1-d) / N} \\
-\vdots \\
-{(1-d) / N}
-\end{bmatrix}
-\\ + d
-\begin{bmatrix}
-\ell(p_1,p_1) & \ell(p_1,p_2) & \cdots & \ell(p_1,p_N) \\
-\ell(p_2,p_1) & \ddots &  & \vdots \\
-\vdots & & \ell(p_i,p_j) & \\
-\ell(p_N,p_1) & \cdots & & \ell(p_N,p_N)
-\end{bmatrix}
-\mathbf{R}
-\end{equation}
-** Continue
-where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
-\begin{equation} \sum_{i = 1}^N \ell(p_i,p_j) = 1 \end{equation}
-
-
-
-** The Algorithm
-If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-stochastic and \( \mathbf{R} \) is a probability distribution
-- \(\|\mathbf{R}\|=1, \mathbf{E}\mathbf{R}=\mathbf{1} \) where \( \mathbf{E} \) is matrix of all ones
-
-\[ \mathbf{R} = \left( d \mathcal{M} + \frac{1-d}{N} \mathbf{E} \right)\mathbf{R} =: \widehat{ \mathcal{M}} \mathbf{R} \]
-
-** Continue
-Hence PageRank  \( \mathbf{R} \) is the principal eigenvector of \( \widehat{\mathcal{M}} \). A fast and easy way to compute this is using the power method: starting with an arbitrary vector  x(0), the operator \( \widehat{\mathcal{M}} \) is applied in succession, i.e.,
-
-    \[ x(t+1) = \widehat{\mathcal{M}} x(t), \]
-
-until
-
-    \[ |x(t+1) - x(t)| <  \epsilon \]
-
-
-
-** Simple Implementation
-#+BEGIN_SRC python
-import numpy as np
-def pagerank(M, num_iterations: int = 100, d: float = 0.85):
-    N = M.shape[1]
-    v = np.ones(N) / N
-    M_hat = (d * M + (1 - d) / N)
-    for i in range(num_iterations):
-        v = M_hat @ v
-    return v
-M = np.array([[0  , 0, 0 , 0, 1],
-              [0.5, 0, 0 , 0, 0],
-              [0.5, 0, 0 , 0, 0],
-              [0  , 1,0.5, 0, 0],
-              [0  , 0,0.5, 1, 0]])
-v = pagerank(M, 100, 0.85)
-print(v)
-#+end_src
-
-#+RESULTS:
-: None
-
 * Markov Chain
-Let's be more formal !
 Given a Graph and initial probability vector \( \pi _0 \in \mathbb{R}^n \)  where n is the number of vertaces ,
 Define the Matrix P to be \( [P]_{ij}  \) the probability of going from node i to node j
 Define \( \forall j \in [0,n]\bigcap \mathbb{N} , \vec \pi _{n+1} (j) = \vec \pi _n \cdot \vec P_{i,j} \)
-** More definition
+** What's The Goal ?
 we want to find a unique stationary
 distribution \( \lim\limits_{n\to \infty} \pi _n = \pi \) and Rank the Web Pages via that unique stationary distribution !
 
 ** Example
 Observe the following graph
-\[ \pi _{n+1}(0) = \pi _n \cdot P(0,0) + \pi _n \cdot P(1,0) +\pi _n \cdot P(2,0) \\ +\pi _n \cdot P(3,0) + \pi _n \cdot P(4,0) \]
+\[ \pi _{n+1}(0) = \pi_n(0) \cdot P(2,0) + \pi_n(0) \cdot P(3,0) + \pi_n(0) \cdot P(4,0) \]
 
 #+BEGIN_SRC dot :file markov_simple_calc.png
 digraph auth {
@@ -413,18 +318,129 @@ Give me an irreducible markov chain where the stationary distribution does not c
 we have already counter-example , so what else we need to assume on the graph ?
 
 
+
+** Reminder
+#+BEGIN_SRC dot :file multi_stationary_distribution3.png
+digraph auth {
+rankdir=LR;
+node [shape=record];
+1 [label="A 0.2 "]
+2 [label="B 0.8 "]
+2->1 [label="1"];
+1->2 [label="1"];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:multi_stationary_distribution3.png]]
+
+
 * Periodic Markov Chain
 - Must be an irreducible markov chain
-- User visits states in regular interval (period) > 1
-  (There is a better definition)
-So Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
+- If there is a self-transition in the chain (p_{ii}>0 for some i), then the chain is aperiodic.
+Note: Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
 
-If no such period exists > 1 , then we said that the graph is Aperiodic Markov Chain
 
 * Ergodic Theorem
 For Irreducible and aperiodic markov chains:
 1. A unique stationary distribution \( \pi \) exists
 2. All initial distribution \( \pi _0 \) converges to that unique stationary distribution \( \pi \)
+
+
+* Damping Factor
+#+ATTR_REVEAL: :frag (roll-in)
+solution : if we'll reach a sink we'll jump to a random note (Uniformly)
+by the formula
+\[ PR(p_{i})= \frac{1-d}{N} + d \sum_{p_{j} \in B_{p_i}} \frac{PR(p_j)}{L(p_j)} \]
+Where d is usually 0.85 i.e \( d=0.85 \) and \( B_{p_i} \) is the set containing all pages linking to page u
+and \( L(p_j) \) is the number of links from \( p_j \)
+
+#+ATTR_REVEAL: :frag (roll-in)
+Why will it work ?? how ??
+
+
+
+
+
+* A more general notation
+note that we can write the formula more compactly like so
+
+\begin{equation}
+\mathbf{R} =
+\begin{bmatrix}
+PR(p_1) \\
+PR(p_2) \\
+\vdots \\
+PR(p_N)
+\end{bmatrix}
+\end{equation}
+
+where '''R''' is the solution of the equation
+** The full equation
+
+
+\begin{equation}
+\mathbf{R} =
+\begin{bmatrix}
+{(1-d)/ N} \\
+{(1-d) / N} \\
+\vdots \\
+{(1-d) / N}
+\end{bmatrix}
+\\ + d
+\begin{bmatrix}
+\ell(p_1,p_1) & \ell(p_1,p_2) & \cdots & \ell(p_1,p_N) \\
+\ell(p_2,p_1) & \ddots &  & \vdots \\
+\vdots & & \ell(p_i,p_j) & \\
+\ell(p_N,p_1) & \cdots & & \ell(p_N,p_N)
+\end{bmatrix}
+\mathbf{R}
+\end{equation}
+** Continue
+where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
+\begin{equation} \sum_{i = 1}^N \ell(p_i,p_j) = 1 \end{equation}
+
+
+
+** The Algorithm
+If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-stochastic and \( \mathbf{R} \) is a probability distribution
+- \(\|\mathbf{R}\|=1, \mathbf{E}\mathbf{R}=\mathbf{1} \) where \( \mathbf{E} \) is matrix of all ones
+
+\[ \mathbf{R} = \left( d \mathcal{M} + \frac{1-d}{N} \mathbf{E} \right)\mathbf{R} =: \widehat{ \mathcal{M}} \mathbf{R} \]
+
+** Continue
+Hence PageRank  \( \mathbf{R} \) is the principal eigenvector of \( \widehat{\mathcal{M}} \). A fast and easy way to compute this is using the power method: starting with an arbitrary vector  x(0), the operator \( \widehat{\mathcal{M}} \) is applied in succession, i.e.,
+
+    \[ x(t+1) = \widehat{\mathcal{M}} x(t), \]
+
+until
+
+    \[ |x(t+1) - x(t)| <  \epsilon \]
+
+
+
+** Simple Implementation
+#+BEGIN_SRC python
+import numpy as np
+def pagerank(M, num_iterations: int = 100, d: float = 0.85):
+    N = M.shape[1]
+    v = np.ones(N) / N
+    M_hat = (d * M + (1 - d) / N)
+    for i in range(num_iterations):
+        v = M_hat @ v
+    return v
+M = np.array([[0  , 0, 0 , 0, 1],
+              [0.5, 0, 0 , 0, 0],
+              [0.5, 0, 0 , 0, 0],
+              [0  , 1,0.5, 0, 0],
+              [0  , 0,0.5, 1, 0]])
+v = pagerank(M, 100, 0.85)
+print(v)
+#+end_src
+
+#+RESULTS:
+: None
+
 
 * How fast does the solution converges ?
 #+ATTR_REVEAL: :frag (roll-in)

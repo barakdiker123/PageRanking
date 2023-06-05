@@ -419,13 +419,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-05-26 Fri 11:00</p>
+<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-06-06 Tue 01:25</p>
 </section>
 
 
 <section>
-<section id="slide-org12823e8">
-<h2 id="org12823e8">Definition</h2>
+<section id="slide-org9b6d1f4">
+<h2 id="org9b6d1f4">Definition</h2>
 <p>
 Pagerank is an algorithm used by google search to rank web pages
 in their search engine
@@ -438,16 +438,16 @@ In Simpler words : PageRank is a way of measuring the importance of a website
 </section>
 </section>
 <section>
-<section id="slide-orgc2c2c94">
-<h2 id="orgc2c2c94">Notable quote by google</h2>
+<section id="slide-org26a3446">
+<h2 id="org26a3446">Notable quote by google</h2>
 <p>
 PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgbfd110f">
-<h2 id="orgbfd110f">Nice to know</h2>
+<section id="slide-orgabb8ce6">
+<h2 id="orgabb8ce6">Nice to know</h2>
 <p>
 <b>PageRank and all associated patent are expired !!</b>
 </p>
@@ -457,8 +457,8 @@ PageRank works by counting the number and quality of links to a page to determin
 </section>
 </section>
 <section>
-<section id="slide-org996d1f3">
-<h2 id="org996d1f3">So What&rsquo;s the formula ?</h2>
+<section id="slide-org76a4ef6">
+<h2 id="org76a4ef6">So What&rsquo;s the formula ?</h2>
 <p>
 The Naive algorithm is the following formula
 </p>
@@ -478,13 +478,13 @@ and the initial probability is \( \forall v \in V , PR(v)=\frac{1}{|V|} \)
 </section>
 </section>
 <section>
-<section id="slide-orgcafc78c">
-<h2 id="orgcafc78c">Simple Example</h2>
+<section id="slide-org28d01d6">
+<h2 id="org28d01d6">Simple Example</h2>
 <p>
 Note the following graph
 </p>
 
-<pre class="example" id="org62bcd38">
+<pre class="example" id="orgb93cffe">
     PR(A) = 0.25
     PR(B) = 0.25
     PR(C) = 0.25
@@ -492,7 +492,7 @@ Note the following graph
 </pre>
 
 
-<div id="org6ff2633" class="figure">
+<div id="orgc2a0ff1" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAACGCAYAAABE+iTZAAAABmJLR0QA/wD/AP+gvaeTAAAgAElE
 QVR4nO3dd1hUZ74H8O8MzNCUDkoVK92CEVHBrihKVqPoipG43iuasonZ6IIma9yrBrybJ7FEY4kl
 5qoRNRo0kSgWQAUrCjIICkiRjvQ65b1/uHPWkWEEBIby+zzPeYB3zjnzmzkwX055z8tjjDEQQggh
@@ -708,8 +708,8 @@ AAAAAElFTkSuQmCC" />
 
 
 </section>
-<section id="slide-org061df2d">
-<h3 id="org061df2d">After first iteration</h3>
+<section id="slide-org433f79e">
+<h3 id="org433f79e">After first iteration</h3>
 <p>
 We&rsquo;ll Calculate explicitly for PR(A)
 </p>
@@ -720,7 +720,7 @@ We&rsquo;ll Calculate explicitly for PR(A)
 </p>
 
 
-<div id="org0973a76" class="figure">
+<div id="org563470a" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAACGCAYAAAAfMrnoAAAABmJLR0QA/wD/AP+gvaeTAAAgAElE
 QVR4nO3deVxU1f8/8NcMMyyyDKvKKgSyq4iySYpLSpnmvkS5flLTLJc0U/tofsK0+lSYYVqZufRR
 QKPEUtPMJYRExAhcCBCGbWBI9p2Z8/vD79wfIwMO64C+n4/HPGbmzj1n3jNc5n3vueecy2OMMRBC
@@ -954,8 +954,8 @@ LyEGAAAAAElFTkSuQmCC" />
 </section>
 </section>
 <section>
-<section id="slide-org4fef0c8">
-<h2 id="org4fef0c8">Is there a problem ?</h2>
+<section id="slide-orgd0ecf85">
+<h2 id="orgd0ecf85">Is there a problem ?</h2>
 <ul>
 <li class="fragment roll-in">If a page has no links to other pages, it becomes a sink and therefore terminates the random surfing process!</li>
 
@@ -971,8 +971,8 @@ Sound vague .. Why is it a problem ?
 </section>
 </section>
 <section>
-<section id="slide-orgf4b91fe">
-<h2 id="orgf4b91fe">intuition</h2>
+<section id="slide-org2b6fb45">
+<h2 id="org2b6fb45">intuition</h2>
 <p>
 In Each iteration every note &ldquo;passes&rdquo; all his probability to it&rsquo;s outbound neighbours
 </p>
@@ -990,13 +990,13 @@ So the sum of the probability of all nodes \( \sum_{v \in V}PR(v) = 1-PR(v_i) < 
 </section>
 </section>
 <section>
-<section id="slide-orgc6c9bc0">
-<h2 id="orgc6c9bc0">Example</h2>
+<section id="slide-org3317a10">
+<h2 id="org3317a10">Example</h2>
 <p>
 Example with sink
 </p>
 
-<div id="org775f50c" class="figure">
+<div id="org0ad4fd6" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANkAAACFCAIAAABZkMqtAAAABmJLR0QA/wD/AP+gvaeTAAAPpElE
 QVR4nO3dfVBUVR8H8HN5k4VFdGmJkkVQwmQdG1YkwBE0MmUHgmZIgRoqm1CYKJBGFGuidJIaAqFh
 GsihjFABSWGxjQAlQgkBYUzI4p0FgVAqWF735T5/XJ9t3V1WdpHds+7v80fjnnNYjvmde+8599xz
@@ -1074,14 +1074,14 @@ AlxAFgEuIIsAF/8DecKRQ+Bf0CoAAAAASUVORK5CYII=" />
 
 
 </section>
-<section id="slide-org791c18f">
-<h3 id="org791c18f">in the first iteration</h3>
+<section id="slide-orgb0f68b0">
+<h3 id="orgb0f68b0">in the first iteration</h3>
 <p>
 Note that node B and node C passes all it&rsquo;s probability to node A
 And node A passes 0.333 to nobody !
 </p>
 
-<div id="org9848506" class="figure">
+<div id="org3f40226" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAACFCAIAAAChcDFaAAAABmJLR0QA/wD/AP+gvaeTAAAO9UlE
 QVR4nO3daVBTVxsH8BMIMbKVRbYhpaBSZakdoSKbkEGRpkVap4g17aRqEccuUoWWAQaHFqZQP0gp
 ZVqoQItWy2IVkmmdAiNDBcQNpgXHyk4CKCAoi6khy/vhdvJGEjCJ3JwQnt+HjvecE3hi/97c5dwT
@@ -1157,8 +1157,8 @@ AAYQO4DB/wD0sPA01eibaAAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-orgcd2891e">
-<h2 id="orgcd2891e">Another Problem</h2>
+<section id="slide-org172702e">
+<h2 id="org172702e">Another Problem</h2>
 <p>
 Another Problem might occur if we have inside our graph infinite cycle
 </p>
@@ -1172,172 +1172,171 @@ All the PageRank would go into node a and node b
 </p>
 
 
-<div id="org7f8f30e" class="figure">
+<div id="org986e2b6" class="figure">
 <p><img src="data:image/png;base64,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
-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" />
+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
+TgghhGiw/weIPYOf3Dpy9QAAAABJRU5ErkJggg==" />
 </p>
 </div>
 
@@ -1345,173 +1344,31 @@ hBBCNBglckIIIUSDUSInhBBCNBglckIIIUSD/R/KJJghXSJVHwAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org7d20640">
-<h2 id="org7d20640">Damping Factor</h2>
-<p class="fragment (roll-in)">
-solution : if we&rsquo;ll reach a sink we&rsquo;ll jump to a random note (Uniformly)
-by the formula
-\[ PR(p_{i})= \frac{1-d}{N} + d \sum_{p_{j} \in B_{p_i}} \frac{PR(p_j)}{L(p_j)} \]
-Where d is usually 0.85 i.e \( d=0.85 \) and \( B_{p_i} \) is the set containing all pages linking to page u
-and \( L(p_j) \) is the number of links from \( p_j \)
-</p>
-
-<p class="fragment (roll-in)">
-Why will it work ?? how ??
-</p>
-
-
-
-
-
-</section>
-</section>
-<section>
-<section id="slide-org1935b96">
-<h2 id="org1935b96">A more general notation</h2>
+<section id="slide-orgfa2d1a4">
+<h2 id="orgfa2d1a4">Markov Chain</h2>
 <p>
-note that we can write the formula more compactly like so
-</p>
-
-<div>
-\begin{equation}
-\mathbf{R} =
-\begin{bmatrix}
-PR(p_1) \\
-PR(p_2) \\
-\vdots \\
-PR(p_N)
-\end{bmatrix}
-\end{equation}
-
-</div>
-
-<p>
-where &rsquo;&rsquo;&rsquo;R&rsquo;&rsquo;&rsquo; is the solution of the equation
-</p>
-</section>
-<section id="slide-org7458e0a">
-<h3 id="org7458e0a">The full equation</h3>
-<div>
-\begin{equation}
-\mathbf{R} =
-\begin{bmatrix}
-{(1-d)/ N} \\
-{(1-d) / N} \\
-\vdots \\
-{(1-d) / N}
-\end{bmatrix}
-\\ + d
-\begin{bmatrix}
-\ell(p_1,p_1) & \ell(p_1,p_2) & \cdots & \ell(p_1,p_N) \\
-\ell(p_2,p_1) & \ddots &  & \vdots \\
-\vdots & & \ell(p_i,p_j) & \\
-\ell(p_N,p_1) & \cdots & & \ell(p_N,p_N)
-\end{bmatrix}
-\mathbf{R}
-\end{equation}
-
-</div>
-</section>
-<section id="slide-orgf64816c">
-<h3 id="orgf64816c">Continue</h3>
-<p>
-where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
-</p>
-<div>
-\begin{equation} \sum_{i = 1}^N \ell(p_i,p_j) = 1 \end{equation}
-
-</div>
-
-
-
-</section>
-<section id="slide-orge27ce91">
-<h3 id="orge27ce91">The Algorithm</h3>
-<p>
-If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-stochastic and \( \mathbf{R} \) is a probability distribution
-</p>
-<ul>
-<li>\(\|\mathbf{R}\|=1, \mathbf{E}\mathbf{R}=\mathbf{1} \) where \( \mathbf{E} \) is matrix of all ones</li>
-
-</ul>
-
-<p>
-\[ \mathbf{R} = \left( d \mathcal{M} + \frac{1-d}{N} \mathbf{E} \right)\mathbf{R} =: \widehat{ \mathcal{M}} \mathbf{R} \]
-</p>
-
-</section>
-<section id="slide-org8ee37a9">
-<h3 id="org8ee37a9">Continue</h3>
-<p>
-Hence PageRank  \( \mathbf{R} \) is the principal eigenvector of \( \widehat{\mathcal{M}} \). A fast and easy way to compute this is using the power method: starting with an arbitrary vector  x(0), the operator \( \widehat{\mathcal{M}} \) is applied in succession, i.e.,
-</p>
-
-<p>
-\[ x(t+1) = \widehat{\mathcal{M}} x(t), \]
-</p>
-
-<p>
-until
-</p>
-
-<p>
-\[ |x(t+1) - x(t)| <  \epsilon \]
-</p>
-
-
-
-</section>
-<section id="slide-orgec9040c">
-<h3 id="orgec9040c">Simple Implementation</h3>
-<div class="org-src-container">
-
-<pre  class="src src-python"   ><code trim><span style="color: #9d0006;">import</span> numpy <span style="color: #9d0006;">as</span> np
-<span style="color: #9d0006;">def</span> <span style="color: #b57614;">pagerank</span>(M, num_iterations: <span style="color: #af3a03;">int</span> = <span style="color: #8f3f71; font-weight: bold;">100</span>, d: <span style="color: #af3a03;">float</span> = <span style="color: #8f3f71; font-weight: bold;">0.85</span>):
-    N = M.shape[<span style="color: #8f3f71; font-weight: bold;">1</span>]
-    v = np.ones(N) / N
-    M_hat = (d * M + (<span style="color: #8f3f71; font-weight: bold;">1</span> - d) / N)
-    <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">range</span>(num_iterations):
-        v = M_hat @ v
-    <span style="color: #9d0006;">return</span> v
-M = np.array([[<span style="color: #8f3f71; font-weight: bold;">0</span>  , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span> , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">1</span>],
-              [<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span> , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>],
-              [<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span> , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>],
-              [<span style="color: #8f3f71; font-weight: bold;">0</span>  , <span style="color: #8f3f71; font-weight: bold;">1</span>,<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>],
-              [<span style="color: #8f3f71; font-weight: bold;">0</span>  , <span style="color: #8f3f71; font-weight: bold;">0</span>,<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">1</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>]])
-v = pagerank(M, <span style="color: #8f3f71; font-weight: bold;">100</span>, <span style="color: #8f3f71; font-weight: bold;">0.85</span>)
-<span style="color: #af3a03;">print</span>(v)
-</code></pre>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org0331fd8">
-<h2 id="org0331fd8">Markov Chain</h2>
-<p>
-Let&rsquo;s be more formal !
 Given a Graph and initial probability vector \( \pi _0 \in \mathbb{R}^n \)  where n is the number of vertaces ,
 Define the Matrix P to be \( [P]_{ij}  \) the probability of going from node i to node j
 Define \( \forall j \in [0,n]\bigcap \mathbb{N} , \vec \pi _{n+1} (j) = \vec \pi _n \cdot \vec P_{i,j} \)
 </p>
 </section>
-<section id="slide-orgee641db">
-<h3 id="orgee641db">More definition</h3>
+<section id="slide-orgfb600e1">
+<h3 id="orgfb600e1">What&rsquo;s The Goal ?</h3>
 <p>
 we want to find a unique stationary
 distribution \( \lim\limits_{n\to \infty} \pi _n = \pi \) and Rank the Web Pages via that unique stationary distribution !
 </p>
 
 </section>
-<section id="slide-orgc465409">
-<h3 id="orgc465409">Example</h3>
+<section id="slide-orge510305">
+<h3 id="orge510305">Example</h3>
 <p>
 Observe the following graph
-\[ \pi _{n+1}(0) = \pi _n \cdot P(0,0) + \pi _n \cdot P(1,0) +\pi _n \cdot P(2,0) \\ +\pi _n \cdot P(3,0) + \pi _n \cdot P(4,0) \]
+\[ \pi _{n+1}(0) = \pi_n(0) \cdot P(2,0) + \pi_n(0) \cdot P(3,0) + \pi_n(0) \cdot P(4,0) \]
 </p>
 
 
-<div id="org1b73fb4" class="figure">
+<div id="org75c9255" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjMAAABcCAYAAACbbzRkAAAABmJLR0QA/wD/AP+gvaeTAAAcXUlE
 QVR4nO3deXSTdb7H8XfadEubNl0dpMiiDItcRahMQTaZAIrg6DmFekARl8vivWNRGFncwOUAZxQQ
 j8oiogLOUKqocKjSdqAsFodFBAcGr4BAAbvRtE2XNGly/3gmaUPTUqDtk7Tf1znPSfskTb8hpPnk
@@ -1649,8 +1506,8 @@ Pk3CjBBCCCF8moQZIYQQQvi0/wdPV+CpISIDwQAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-orgd0aca2f">
-<h2 id="orgd0aca2f">Serious questions</h2>
+<section id="slide-org64461b1">
+<h2 id="org64461b1">Serious questions</h2>
 <ul>
 <li>Is there unique stationary distribution ?
 Certainly it would be hard to evaluate web pages if there are couple of stationary distribution</li>
@@ -1665,8 +1522,8 @@ serious question &#x2026; maybe mathematics could help us ??
 </section>
 </section>
 <section>
-<section id="slide-org80e4f6b">
-<h2 id="org80e4f6b">First question</h2>
+<section id="slide-org8d5c56c">
+<h2 id="org8d5c56c">First question</h2>
 <p>
 Can you define a Markov chain with multiple stationary distributions ?
 </p>
@@ -1676,14 +1533,14 @@ Think of markov chain with only 2 states &#x2026;
 </p>
 
 </section>
-<section id="slide-org9d3a2c1">
-<h3 id="org9d3a2c1">The Answer</h3>
+<section id="slide-org041a844">
+<h3 id="org041a844">The Answer</h3>
 <p>
 This graph has multiple stationary solutions
 </p>
 
 
-<div id="org7a31178" class="figure">
+<div id="orgc69f15f" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOIAAAA9CAIAAAA/GiJ6AAAABmJLR0QA/wD/AP+gvaeTAAALUElE
 QVR4nO2de0wTyxfHz7a1EkGJJbx8Ad6KgkoiiqXoRS/4wqA1UUHLTSQRNWJQLOofEB/J/QfRKxqt
 hsQYFW8MioJBY6IiinpLKREV32BFCzQIJpRXoZTO74+N++ulpV3ahbUyn7/Yc87Onu18nZ2Z3RkJ
@@ -1741,7 +1598,7 @@ RU5ErkJggg==" />
 </div>
 
 
-<div id="orga469020" class="figure">
+<div id="orgdde12c7" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAAA9CAYAAADVlUdSAAAABmJLR0QA/wD/AP+gvaeTAAAMnUlE
 QVR4nO3df0zU9R8H8OcH7uDG5CR+NBaNHwMxfowTSgROTLBJKmXmhKCmEBKTMpnSyujXlitoyzI9
 CEchmDUkkRG2+WNOMb2wkNAgB4QCR8avcGGh3Od4ff8wr07uzvvxOeD4vh8bY3sf78/n9b69Xvf5
@@ -1806,8 +1663,8 @@ pgLP83B0dGTfGJ/9qtm0+RQQYoKBsQ9s2pxhBMQKimEE9D9Rtf39XTQo0AAAAABJRU5ErkJggg==" />
 
 
 </section>
-<section id="slide-org240ead8">
-<h3 id="org240ead8">Another Example</h3>
+<section id="slide-org9249732">
+<h3 id="org9249732">Another Example</h3>
 <p class="fragment (roll-in)">
 Can we Think of another example ??
 </p>
@@ -1826,15 +1683,15 @@ Let&rsquo;s see the example !
 
 
 </section>
-<section id="slide-org32a16c0">
-<h3 id="org32a16c0">Visulaize</h3>
+<section id="slide-org17e32f3">
+<h3 id="org17e32f3">Visulaize</h3>
 <p>
 There isn&rsquo;t a path between node 0 into node 1 i.e this graph isn&rsquo;t reducible
 So again the stationary solution isn&rsquo;t unique !!
 </p>
 
 
-<div id="org54e2874" class="figure">
+<div id="orga659ce9" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAADiCAYAAAAyJPvQAAAABmJLR0QA/wD/AP+gvaeTAAASG0lE
 QVR4nO2de0xT5//H36cUKKJoqiAqV0G8EoUJE4W4rxAZG0a8MIR5QRka3SVM3E2D/jHdnBqcMzgx
 TkQlipehbGaZusXADNMZijp0CSgIFYYU0YBMStvP7w9/MEovFn1OW5fnlTTGpzyfz+e8etpze855
@@ -1922,8 +1779,8 @@ Dj7rCku4TIZwmQzhMhnyf+eQ2IOtTmVmAAAAAElFTkSuQmCC" />
 </div>
 
 </section>
-<section id="slide-org5a6620a">
-<h3 id="org5a6620a">Conclusion</h3>
+<section id="slide-orgef369d3">
+<h3 id="orgef369d3">Conclusion</h3>
 <p>
 The first graph was periodic markov chain
 and the second graph was reducible markov chain
@@ -1936,8 +1793,8 @@ the graph is aperiodic and irreducible markov chain
 
 
 </section>
-<section id="slide-orgab15133">
-<h3 id="orgab15133">Theorem</h3>
+<section id="slide-orgf655691">
+<h3 id="orgf655691">Theorem</h3>
 <p>
 if graph is Irreducible markov chain i.e all state are reachable \( \rightarrow \) there is unique stationary distribution
 </p>
@@ -1951,8 +1808,8 @@ All other solutions aren&rsquo;t stationary for example (0.3 0.7) would oscilate
 </section>
 </section>
 <section>
-<section id="slide-org7291dc8">
-<h2 id="org7291dc8">The second question</h2>
+<section id="slide-orgedb7e7a">
+<h2 id="orgedb7e7a">The second question</h2>
 <p>
 Does every initial distribution converge to the stationary one ?
 </p>
@@ -1969,30 +1826,94 @@ we have already counter-example , so what else we need to assume on the graph ?
 </p>
 
 
+
+</section>
+<section id="slide-org2bd0bb6">
+<h3 id="org2bd0bb6">Reminder</h3>
+
+<div id="orgdd33391" class="figure">
+<p><img src="data:image/png;base64,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" />
+</p>
+</div>
+
+
 </section>
 </section>
 <section>
-<section id="slide-org1e2d848">
-<h2 id="org1e2d848">Periodic Markov Chain</h2>
+<section id="slide-org6c54455">
+<h2 id="org6c54455">Periodic Markov Chain</h2>
 <ul>
 <li>Must be an irreducible markov chain</li>
-<li>User visits states in regular interval (period) &gt; 1
-(There is a better definition)</li>
+<li>If there is a self-transition in the chain (p<sub>ii</sub>&gt;0 for some i), then the chain is aperiodic.</li>
 
 </ul>
 <p>
-So Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
+Note: Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
 </p>
 
-<p>
-If no such period exists &gt; 1 , then we said that the graph is Aperiodic Markov Chain
-</p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgbb5a7ca">
-<h2 id="orgbb5a7ca">Ergodic Theorem</h2>
+<section id="slide-org5f87392">
+<h2 id="org5f87392">Ergodic Theorem</h2>
 <p>
 For Irreducible and aperiodic markov chains:
 </p>
@@ -2002,11 +1923,154 @@ For Irreducible and aperiodic markov chains:
 
 </ol>
 
+
 </section>
 </section>
 <section>
-<section id="slide-orgadd33ee">
-<h2 id="orgadd33ee">How fast does the solution converges ?</h2>
+<section id="slide-orga5d0452">
+<h2 id="orga5d0452">Damping Factor</h2>
+<p class="fragment (roll-in)">
+solution : if we&rsquo;ll reach a sink we&rsquo;ll jump to a random note (Uniformly)
+by the formula
+\[ PR(p_{i})= \frac{1-d}{N} + d \sum_{p_{j} \in B_{p_i}} \frac{PR(p_j)}{L(p_j)} \]
+Where d is usually 0.85 i.e \( d=0.85 \) and \( B_{p_i} \) is the set containing all pages linking to page u
+and \( L(p_j) \) is the number of links from \( p_j \)
+</p>
+
+<p class="fragment (roll-in)">
+Why will it work ?? how ??
+</p>
+
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6b3df9d">
+<h2 id="org6b3df9d">A more general notation</h2>
+<p>
+note that we can write the formula more compactly like so
+</p>
+
+<div>
+\begin{equation}
+\mathbf{R} =
+\begin{bmatrix}
+PR(p_1) \\
+PR(p_2) \\
+\vdots \\
+PR(p_N)
+\end{bmatrix}
+\end{equation}
+
+</div>
+
+<p>
+where &rsquo;&rsquo;&rsquo;R&rsquo;&rsquo;&rsquo; is the solution of the equation
+</p>
+</section>
+<section id="slide-orge110c6c">
+<h3 id="orge110c6c">The full equation</h3>
+<div>
+\begin{equation}
+\mathbf{R} =
+\begin{bmatrix}
+{(1-d)/ N} \\
+{(1-d) / N} \\
+\vdots \\
+{(1-d) / N}
+\end{bmatrix}
+\\ + d
+\begin{bmatrix}
+\ell(p_1,p_1) & \ell(p_1,p_2) & \cdots & \ell(p_1,p_N) \\
+\ell(p_2,p_1) & \ddots &  & \vdots \\
+\vdots & & \ell(p_i,p_j) & \\
+\ell(p_N,p_1) & \cdots & & \ell(p_N,p_N)
+\end{bmatrix}
+\mathbf{R}
+\end{equation}
+
+</div>
+</section>
+<section id="slide-org87d7adc">
+<h3 id="org87d7adc">Continue</h3>
+<p>
+where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
+</p>
+<div>
+\begin{equation} \sum_{i = 1}^N \ell(p_i,p_j) = 1 \end{equation}
+
+</div>
+
+
+
+</section>
+<section id="slide-orgbf4740f">
+<h3 id="orgbf4740f">The Algorithm</h3>
+<p>
+If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-stochastic and \( \mathbf{R} \) is a probability distribution
+</p>
+<ul>
+<li>\(\|\mathbf{R}\|=1, \mathbf{E}\mathbf{R}=\mathbf{1} \) where \( \mathbf{E} \) is matrix of all ones</li>
+
+</ul>
+
+<p>
+\[ \mathbf{R} = \left( d \mathcal{M} + \frac{1-d}{N} \mathbf{E} \right)\mathbf{R} =: \widehat{ \mathcal{M}} \mathbf{R} \]
+</p>
+
+</section>
+<section id="slide-org394b3da">
+<h3 id="org394b3da">Continue</h3>
+<p>
+Hence PageRank  \( \mathbf{R} \) is the principal eigenvector of \( \widehat{\mathcal{M}} \). A fast and easy way to compute this is using the power method: starting with an arbitrary vector  x(0), the operator \( \widehat{\mathcal{M}} \) is applied in succession, i.e.,
+</p>
+
+<p>
+\[ x(t+1) = \widehat{\mathcal{M}} x(t), \]
+</p>
+
+<p>
+until
+</p>
+
+<p>
+\[ |x(t+1) - x(t)| <  \epsilon \]
+</p>
+
+
+
+</section>
+<section id="slide-orgf557822">
+<h3 id="orgf557822">Simple Implementation</h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"   ><code trim><span style="color: #9d0006;">import</span> numpy <span style="color: #9d0006;">as</span> np
+<span style="color: #9d0006;">def</span> <span style="color: #b57614;">pagerank</span>(M, num_iterations: <span style="color: #af3a03;">int</span> = <span style="color: #8f3f71; font-weight: bold;">100</span>, d: <span style="color: #af3a03;">float</span> = <span style="color: #8f3f71; font-weight: bold;">0.85</span>):
+    N = M.shape[<span style="color: #8f3f71; font-weight: bold;">1</span>]
+    v = np.ones(N) / N
+    M_hat = (d * M + (<span style="color: #8f3f71; font-weight: bold;">1</span> - d) / N)
+    <span style="color: #9d0006;">for</span> i <span style="color: #9d0006;">in</span> <span style="color: #af3a03;">range</span>(num_iterations):
+        v = M_hat @ v
+    <span style="color: #9d0006;">return</span> v
+M = np.array([[<span style="color: #8f3f71; font-weight: bold;">0</span>  , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span> , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">1</span>],
+              [<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span> , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>],
+              [<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span> , <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>],
+              [<span style="color: #8f3f71; font-weight: bold;">0</span>  , <span style="color: #8f3f71; font-weight: bold;">1</span>,<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>],
+              [<span style="color: #8f3f71; font-weight: bold;">0</span>  , <span style="color: #8f3f71; font-weight: bold;">0</span>,<span style="color: #8f3f71; font-weight: bold;">0.5</span>, <span style="color: #8f3f71; font-weight: bold;">1</span>, <span style="color: #8f3f71; font-weight: bold;">0</span>]])
+v = pagerank(M, <span style="color: #8f3f71; font-weight: bold;">100</span>, <span style="color: #8f3f71; font-weight: bold;">0.85</span>)
+<span style="color: #af3a03;">print</span>(v)
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge08bce9">
+<h2 id="orge08bce9">How fast does the solution converges ?</h2>
 <p class="fragment (roll-in)">
 Because of the large eigengap of the modified adjacency matrix above, the values of the PageRank eigenvector can be approximated to within a high degree of accuracy within only a &ldquo;few&rdquo; iterations.
 </p>
@@ -2026,8 +2090,8 @@ log(n)
 </section>
 </section>
 <section>
-<section id="slide-orgccfa59a">
-<h2 id="orgccfa59a">The End</h2>
+<section id="slide-org724b1eb">
+<h2 id="org724b1eb">The End</h2>
 <p>
 End !
 </p>
@@ -2035,8 +2099,8 @@ End !
 </section>
 </section>
 <section>
-<section id="slide-org62e4ab8">
-<h2 id="org62e4ab8">To delete</h2>
+<section id="slide-org6d87a6f">
+<h2 id="org6d87a6f">To delete</h2>
 <div class="column" style="float:left; width: 50%">
 <p>
 Column 1
@@ -2053,8 +2117,8 @@ Column 2
 </section>
 </section>
 <section>
-<section id="slide-orgfb371a5">
-<h2 id="orgfb371a5">To delete</h2>
+<section id="slide-org669212f">
+<h2 id="org669212f">To delete</h2>
 <div id="box-container">
 <div id="box-1">
 <p>
@@ -2079,8 +2143,8 @@ Box 3
 </section>
 </section>
 <section>
-<section id="slide-org8876fc0">
-<h2 id="org8876fc0">Some Notable code</h2>
+<section id="slide-orgf8aff58">
+<h2 id="orgf8aff58">Some Notable code</h2>
 <div class="org-src-container">
 
 <pre  class="src src-c++"   data-line-numbers='1|3'><code trim><span style="color: #8f3f71;">int</span> <span style="color: #b57614;">main</span><span style="color: #076678;">()</span>
@@ -2092,15 +2156,15 @@ Box 3
 </section>
 </section>
 <section>
-<section id="slide-org47ef0eb">
-<h2 id="org47ef0eb">Slide 1</h2>
+<section id="slide-org4afd40c">
+<h2 id="org4afd40c">Slide 1</h2>
 <ul>
 <li class="fragment roll-in">List item 1</li>
 
 </ul>
 
 
-<div id="org761b9a3" class="figure">
+<div id="orga81eb0f" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAb8AAABzCAYAAAAITgwJAAAABmJLR0QA/wD/AP+gvaeTAAAVTElE
 QVR4nO3de1RT9wEH8O8NSUAUhOKwigqIjProqhU7UNqeba2cAXbsgWBFFLrqmJtQZ5m2py3d5gSt
 FkQcHnyBtS0460HqwbX2nGmx0VbtqbTq0aq1qARw8pCHJCR3f8SkRF5BJTdwv59zcoDkJvkS9H7v
@@ -2207,7 +2271,7 @@ Ijvaw31+REQkOyw/IiKSHZYfERHJjhLAHqlDEBER2dGx/wPUOKAVvMRccQAAAABJRU5ErkJggg==" />
 </ul>
 
 
-<div id="org00c89c4" class="figure">
+<div id="orgec423e7" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAAA8CAYAAAD/qxTKAAAABmJLR0QA/wD/AP+gvaeTAAAF1ElE
 QVR4nO3dX0iTewDG8ec9ShqUCUI3IhUVRUZEFDgYdBUD6aYLHUiUEgRdRKM/wrxJiBQvkkIsg2aL
 omIGQSRCGEQQoxheGAhFIbVBhtEf06I0d66U4/Ffx73r9+53vp87X28e9qDPfr7bdNLpdFoAANir
@@ -2242,8 +2306,8 @@ PcYOAGC9vwFYBOcoiD/G2QAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-orgbf7ba74" data-auto-animate>
-<h2 id="orgbf7ba74">Nice Code Animation</h2>
+<section id="slide-org6820f03" data-auto-animate>
+<h2 id="org6820f03">Nice Code Animation</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
@@ -2252,8 +2316,8 @@ PcYOAGC9vwFYBOcoiD/G2QAAAABJRU5ErkJggg==" />
 
 
 </section>
-<section id="slide-org77420a3" data-auto-animate>
-<h3 id="org77420a3">Added value</h3>
+<section id="slide-orgd928a81" data-auto-animate>
+<h3 id="orgd928a81">Added value</h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
@@ -2264,8 +2328,8 @@ PcYOAGC9vwFYBOcoiD/G2QAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org4e1946f">
-<h2 id="org4e1946f">some equation</h2>
+<section id="slide-org000d5af">
+<h2 id="org000d5af">some equation</h2>
 <p>
 \[ \sin(x) = \frac{1}{n} \]
 </p>

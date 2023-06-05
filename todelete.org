@@ -1,0 +1,12 @@
+#+title: Todelete
+
+#+OPTIONS: REVEAL_MATHJAX_URL: "/Users/barakdiker/install_from_git/reveal.js/node_modules/reveal.js-math/dist/math.umd.js"
+
+#+OPTIONS: REVEAL_MATHJAX_URL: /Users/barakdiker/install_from_git/reveal.js/node_modules/mathjax/es5/tex-svg-full.js
+
+:REVEAL_PROPERTIES:
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_REVEAL_JS_VERSION: 4
+:END:
+
+3->1 [label="bleh!", fontcolor=red];
