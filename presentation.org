@@ -337,9 +337,10 @@ node [shape=record];
 
 * Periodic Markov Chain
 - Must be an irreducible markov chain
-- If there is a self-transition in the chain (p_{ii}>0 for some i), then the chain is aperiodic.
-Note: Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
+- A state i has a period k if k is the greatest common divisor of the number of transitions by which i can be reached , starting from i
+  \[ k = gcd\{n>1 : Pr(X_n=i| X_0=i)>0\} \]
 
+Note: Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
 
 * Ergodic Theorem
 For Irreducible and aperiodic markov chains:

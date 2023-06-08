@@ -419,13 +419,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-06-06 Tue 01:25</p>
+<section id="sec-title-slide"><h2 class="author">Barak-Nadav Diker</h2><p class="date">Created: 2023-06-06 Tue 11:14</p>
 </section>
 
 
 <section>
-<section id="slide-org9b6d1f4">
-<h2 id="org9b6d1f4">Definition</h2>
+<section id="slide-orgd74af92">
+<h2 id="orgd74af92">Definition</h2>
 <p>
 Pagerank is an algorithm used by google search to rank web pages
 in their search engine
@@ -438,16 +438,16 @@ In Simpler words : PageRank is a way of measuring the importance of a website
 </section>
 </section>
 <section>
-<section id="slide-org26a3446">
-<h2 id="org26a3446">Notable quote by google</h2>
+<section id="slide-org4471ddb">
+<h2 id="org4471ddb">Notable quote by google</h2>
 <p>
 PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgabb8ce6">
-<h2 id="orgabb8ce6">Nice to know</h2>
+<section id="slide-org63212ca">
+<h2 id="org63212ca">Nice to know</h2>
 <p>
 <b>PageRank and all associated patent are expired !!</b>
 </p>
@@ -457,8 +457,8 @@ PageRank works by counting the number and quality of links to a page to determin
 </section>
 </section>
 <section>
-<section id="slide-org76a4ef6">
-<h2 id="org76a4ef6">So What&rsquo;s the formula ?</h2>
+<section id="slide-org74d36c4">
+<h2 id="org74d36c4">So What&rsquo;s the formula ?</h2>
 <p>
 The Naive algorithm is the following formula
 </p>
@@ -478,13 +478,13 @@ and the initial probability is \( \forall v \in V , PR(v)=\frac{1}{|V|} \)
 </section>
 </section>
 <section>
-<section id="slide-org28d01d6">
-<h2 id="org28d01d6">Simple Example</h2>
+<section id="slide-org0d10587">
+<h2 id="org0d10587">Simple Example</h2>
 <p>
 Note the following graph
 </p>
 
-<pre class="example" id="orgb93cffe">
+<pre class="example" id="orga4966cc">
     PR(A) = 0.25
     PR(B) = 0.25
     PR(C) = 0.25
@@ -492,7 +492,7 @@ Note the following graph
 </pre>
 
 
-<div id="orgc2a0ff1" class="figure">
+<div id="org7000299" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAACGCAYAAABE+iTZAAAABmJLR0QA/wD/AP+gvaeTAAAgAElE
 QVR4nO3dd1hUZ74H8O8MzNCUDkoVK92CEVHBrihKVqPoipG43iuasonZ6IIma9yrBrybJ7FEY4kl
 5qoRNRo0kSgWQAUrCjIICkiRjvQ65b1/uHPWkWEEBIby+zzPeYB3zjnzmzkwX055z8tjjDEQQggh
@@ -708,8 +708,8 @@ AAAAAElFTkSuQmCC" />
 
 
 </section>
-<section id="slide-org433f79e">
-<h3 id="org433f79e">After first iteration</h3>
+<section id="slide-orgc0af3bb">
+<h3 id="orgc0af3bb">After first iteration</h3>
 <p>
 We&rsquo;ll Calculate explicitly for PR(A)
 </p>
@@ -720,7 +720,7 @@ We&rsquo;ll Calculate explicitly for PR(A)
 </p>
 
 
-<div id="org563470a" class="figure">
+<div id="org70f8c98" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAACGCAYAAAAfMrnoAAAABmJLR0QA/wD/AP+gvaeTAAAgAElE
 QVR4nO3deVxU1f8/8NcMMyyyDKvKKgSyq4iySYpLSpnmvkS5flLTLJc0U/tofsK0+lSYYVqZufRR
 QKPEUtPMJYRExAhcCBCGbWBI9p2Z8/vD79wfIwMO64C+n4/HPGbmzj1n3jNc5n3vueecy2OMMRBC
@@ -954,8 +954,8 @@ LyEGAAAAAElFTkSuQmCC" />
 </section>
 </section>
 <section>
-<section id="slide-orgd0ecf85">
-<h2 id="orgd0ecf85">Is there a problem ?</h2>
+<section id="slide-org361828f">
+<h2 id="org361828f">Is there a problem ?</h2>
 <ul>
 <li class="fragment roll-in">If a page has no links to other pages, it becomes a sink and therefore terminates the random surfing process!</li>
 
@@ -971,8 +971,8 @@ Sound vague .. Why is it a problem ?
 </section>
 </section>
 <section>
-<section id="slide-org2b6fb45">
-<h2 id="org2b6fb45">intuition</h2>
+<section id="slide-org117b7ae">
+<h2 id="org117b7ae">intuition</h2>
 <p>
 In Each iteration every note &ldquo;passes&rdquo; all his probability to it&rsquo;s outbound neighbours
 </p>
@@ -990,13 +990,13 @@ So the sum of the probability of all nodes \( \sum_{v \in V}PR(v) = 1-PR(v_i) < 
 </section>
 </section>
 <section>
-<section id="slide-org3317a10">
-<h2 id="org3317a10">Example</h2>
+<section id="slide-org3915ddc">
+<h2 id="org3915ddc">Example</h2>
 <p>
 Example with sink
 </p>
 
-<div id="org0ad4fd6" class="figure">
+<div id="org33add30" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANkAAACFCAIAAABZkMqtAAAABmJLR0QA/wD/AP+gvaeTAAAPpElE
 QVR4nO3dfVBUVR8H8HN5k4VFdGmJkkVQwmQdG1YkwBE0MmUHgmZIgRoqm1CYKJBGFGuidJIaAqFh
 GsihjFABSWGxjQAlQgkBYUzI4p0FgVAqWF735T5/XJ9t3V1WdpHds+7v80fjnnNYjvmde+8599xz
@@ -1074,14 +1074,14 @@ AlxAFgEuIIsAF/8DecKRQ+Bf0CoAAAAASUVORK5CYII=" />
 
 
 </section>
-<section id="slide-orgb0f68b0">
-<h3 id="orgb0f68b0">in the first iteration</h3>
+<section id="slide-orgd186ba9">
+<h3 id="orgd186ba9">in the first iteration</h3>
 <p>
 Note that node B and node C passes all it&rsquo;s probability to node A
 And node A passes 0.333 to nobody !
 </p>
 
-<div id="org3f40226" class="figure">
+<div id="org4642fc6" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAACFCAIAAAChcDFaAAAABmJLR0QA/wD/AP+gvaeTAAAO9UlE
 QVR4nO3daVBTVxsH8BMIMbKVRbYhpaBSZakdoSKbkEGRpkVap4g17aRqEccuUoWWAQaHFqZQP0gp
 ZVqoQItWy2IVkmmdAiNDBcQNpgXHyk4CKCAoi6khy/vhdvJGEjCJ3JwQnt+HjvecE3hi/97c5dwT
@@ -1157,8 +1157,8 @@ AAYQO4DB/wD0sPA01eibaAAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org172702e">
-<h2 id="org172702e">Another Problem</h2>
+<section id="slide-org142ec91">
+<h2 id="org142ec91">Another Problem</h2>
 <p>
 Another Problem might occur if we have inside our graph infinite cycle
 </p>
@@ -1172,7 +1172,7 @@ All the PageRank would go into node a and node b
 </p>
 
 
-<div id="org986e2b6" class="figure">
+<div id="org7d4d67f" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfIAAABgCAYAAADmSPAsAAAABmJLR0QA/wD/AP+gvaeTAAAgAElE
 QVR4nO3deVgT1/oH8G9CQGRfBBEIm+CC4FoQqCjijtq6XpT2orUt3dx/WJcq1V579Vbb2lrt1Ra1
 VlsFe3HBRy/gAmhBULGIcQFBFqVWyy6EQHJ+f9DMJRBWgST4fp4nT5JDZubNGOedM3MWHmOMgRBC
@@ -1344,31 +1344,31 @@ TgghhGiw/weIPYOf3Dpy9QAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-orgfa2d1a4">
-<h2 id="orgfa2d1a4">Markov Chain</h2>
+<section id="slide-org2c55c56">
+<h2 id="org2c55c56">Markov Chain</h2>
 <p>
 Given a Graph and initial probability vector \( \pi _0 \in \mathbb{R}^n \)  where n is the number of vertaces ,
 Define the Matrix P to be \( [P]_{ij}  \) the probability of going from node i to node j
 Define \( \forall j \in [0,n]\bigcap \mathbb{N} , \vec \pi _{n+1} (j) = \vec \pi _n \cdot \vec P_{i,j} \)
 </p>
 </section>
-<section id="slide-orgfb600e1">
-<h3 id="orgfb600e1">What&rsquo;s The Goal ?</h3>
+<section id="slide-org26673e7">
+<h3 id="org26673e7">What&rsquo;s The Goal ?</h3>
 <p>
 we want to find a unique stationary
 distribution \( \lim\limits_{n\to \infty} \pi _n = \pi \) and Rank the Web Pages via that unique stationary distribution !
 </p>
 
 </section>
-<section id="slide-orge510305">
-<h3 id="orge510305">Example</h3>
+<section id="slide-org90f0bc9">
+<h3 id="org90f0bc9">Example</h3>
 <p>
 Observe the following graph
 \[ \pi _{n+1}(0) = \pi_n(0) \cdot P(2,0) + \pi_n(0) \cdot P(3,0) + \pi_n(0) \cdot P(4,0) \]
 </p>
 
 
-<div id="org75c9255" class="figure">
+<div id="org7b354d4" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjMAAABcCAYAAACbbzRkAAAABmJLR0QA/wD/AP+gvaeTAAAcXUlE
 QVR4nO3deXSTdb7H8XfadEubNl0dpMiiDItcRahMQTaZAIrg6DmFekARl8vivWNRGFncwOUAZxQQ
 j8oiogLOUKqocKjSdqAsFodFBAcGr4BAAbvRtE2XNGly/3gmaUPTUqDtk7Tf1znPSfskTb8hpPnk
@@ -1506,8 +1506,8 @@ Pk3CjBBCCCF8moQZIYQQQvi0/wdPV+CpISIDwQAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org64461b1">
-<h2 id="org64461b1">Serious questions</h2>
+<section id="slide-org512f1ee">
+<h2 id="org512f1ee">Serious questions</h2>
 <ul>
 <li>Is there unique stationary distribution ?
 Certainly it would be hard to evaluate web pages if there are couple of stationary distribution</li>
@@ -1522,8 +1522,8 @@ serious question &#x2026; maybe mathematics could help us ??
 </section>
 </section>
 <section>
-<section id="slide-org8d5c56c">
-<h2 id="org8d5c56c">First question</h2>
+<section id="slide-org02af8c6">
+<h2 id="org02af8c6">First question</h2>
 <p>
 Can you define a Markov chain with multiple stationary distributions ?
 </p>
@@ -1533,14 +1533,14 @@ Think of markov chain with only 2 states &#x2026;
 </p>
 
 </section>
-<section id="slide-org041a844">
-<h3 id="org041a844">The Answer</h3>
+<section id="slide-org664e51b">
+<h3 id="org664e51b">The Answer</h3>
 <p>
 This graph has multiple stationary solutions
 </p>
 
 
-<div id="orgc69f15f" class="figure">
+<div id="org55ea37d" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOIAAAA9CAIAAAA/GiJ6AAAABmJLR0QA/wD/AP+gvaeTAAALUElE
 QVR4nO2de0wTyxfHz7a1EkGJJbx8Ad6KgkoiiqXoRS/4wqA1UUHLTSQRNWJQLOofEB/J/QfRKxqt
 hsQYFW8MioJBY6IiinpLKREV32BFCzQIJpRXoZTO74+N++ulpV3ahbUyn7/Yc87Onu18nZ2Z3RkJ
@@ -1598,7 +1598,7 @@ RU5ErkJggg==" />
 </div>
 
 
-<div id="orgdde12c7" class="figure">
+<div id="orgcebed93" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAAA9CAYAAADVlUdSAAAABmJLR0QA/wD/AP+gvaeTAAAMnUlE
 QVR4nO3df0zU9R8H8OcH7uDG5CR+NBaNHwMxfowTSgROTLBJKmXmhKCmEBKTMpnSyujXlitoyzI9
 CEchmDUkkRG2+WNOMb2wkNAgB4QCR8avcGGh3Od4ff8wr07uzvvxOeD4vh8bY3sf78/n9b69Xvf5
@@ -1663,8 +1663,8 @@ pgLP83B0dGTfGJ/9qtm0+RQQYoKBsQ9s2pxhBMQKimEE9D9Rtf39XTQo0AAAAABJRU5ErkJggg==" />
 
 
 </section>
-<section id="slide-org9249732">
-<h3 id="org9249732">Another Example</h3>
+<section id="slide-org30e4cce">
+<h3 id="org30e4cce">Another Example</h3>
 <p class="fragment (roll-in)">
 Can we Think of another example ??
 </p>
@@ -1683,15 +1683,15 @@ Let&rsquo;s see the example !
 
 
 </section>
-<section id="slide-org17e32f3">
-<h3 id="org17e32f3">Visulaize</h3>
+<section id="slide-orgc157afa">
+<h3 id="orgc157afa">Visulaize</h3>
 <p>
 There isn&rsquo;t a path between node 0 into node 1 i.e this graph isn&rsquo;t reducible
 So again the stationary solution isn&rsquo;t unique !!
 </p>
 
 
-<div id="orga659ce9" class="figure">
+<div id="org6773355" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAADiCAYAAAAyJPvQAAAABmJLR0QA/wD/AP+gvaeTAAASG0lE
 QVR4nO2de0xT5//H36cUKKJoqiAqV0G8EoUJE4W4rxAZG0a8MIR5QRka3SVM3E2D/jHdnBqcMzgx
 TkQlipehbGaZusXADNMZijp0CSgIFYYU0YBMStvP7w9/MEovFn1OW5fnlTTGpzyfz+e8etpze855
@@ -1779,8 +1779,8 @@ Dj7rCku4TIZwmQzhMhnyf+eQ2IOtTmVmAAAAAElFTkSuQmCC" />
 </div>
 
 </section>
-<section id="slide-orgef369d3">
-<h3 id="orgef369d3">Conclusion</h3>
+<section id="slide-org2fabc29">
+<h3 id="org2fabc29">Conclusion</h3>
 <p>
 The first graph was periodic markov chain
 and the second graph was reducible markov chain
@@ -1793,8 +1793,8 @@ the graph is aperiodic and irreducible markov chain
 
 
 </section>
-<section id="slide-orgf655691">
-<h3 id="orgf655691">Theorem</h3>
+<section id="slide-org92750f9">
+<h3 id="org92750f9">Theorem</h3>
 <p>
 if graph is Irreducible markov chain i.e all state are reachable \( \rightarrow \) there is unique stationary distribution
 </p>
@@ -1808,8 +1808,8 @@ All other solutions aren&rsquo;t stationary for example (0.3 0.7) would oscilate
 </section>
 </section>
 <section>
-<section id="slide-orgedb7e7a">
-<h2 id="orgedb7e7a">The second question</h2>
+<section id="slide-org88ddbe1">
+<h2 id="org88ddbe1">The second question</h2>
 <p>
 Does every initial distribution converge to the stationary one ?
 </p>
@@ -1828,10 +1828,10 @@ we have already counter-example , so what else we need to assume on the graph ?
 
 
 </section>
-<section id="slide-org2bd0bb6">
-<h3 id="org2bd0bb6">Reminder</h3>
+<section id="slide-orgbdc3b7c">
+<h3 id="orgbdc3b7c">Reminder</h3>
 
-<div id="orgdd33391" class="figure">
+<div id="org117d914" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAAA9CAYAAADVlUdSAAAABmJLR0QA/wD/AP+gvaeTAAAMnUlE
 QVR4nO3df0zU9R8H8OcH7uDG5CR+NBaNHwMxfowTSgROTLBJKmXmhKCmEBKTMpnSyujXlitoyzI9
 CEchmDUkkRG2+WNOMb2wkNAgB4QCR8avcGGh3Od4ff8wr07uzvvxOeD4vh8bY3sf78/n9b69Xvf5
@@ -1897,23 +1897,24 @@ pgLP83B0dGTfGJ/9qtm0+RQQYoKBsQ9s2pxhBMQKimEE9D9Rtf39XTQo0AAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org6c54455">
-<h2 id="org6c54455">Periodic Markov Chain</h2>
+<section id="slide-org84593df">
+<h2 id="org84593df">Periodic Markov Chain</h2>
 <ul>
 <li>Must be an irreducible markov chain</li>
-<li>If there is a self-transition in the chain (p<sub>ii</sub>&gt;0 for some i), then the chain is aperiodic.</li>
+<li>A state i has a period k if k is the greatest common divisor of the number of transitions by which i can be reached , starting from i
+\[ k = gcd\{n>1 : Pr(X_n=i| X_0=i)>0\} \]</li>
 
 </ul>
+
 <p>
 Note: Given an Periodic Markov Chain There is no guarantee of convergence to stationary distribution
 </p>
 
-
 </section>
 </section>
 <section>
-<section id="slide-org5f87392">
-<h2 id="org5f87392">Ergodic Theorem</h2>
+<section id="slide-orgcdd7c23">
+<h2 id="orgcdd7c23">Ergodic Theorem</h2>
 <p>
 For Irreducible and aperiodic markov chains:
 </p>
@@ -1927,8 +1928,8 @@ For Irreducible and aperiodic markov chains:
 </section>
 </section>
 <section>
-<section id="slide-orga5d0452">
-<h2 id="orga5d0452">Damping Factor</h2>
+<section id="slide-orgcf39666">
+<h2 id="orgcf39666">Damping Factor</h2>
 <p class="fragment (roll-in)">
 solution : if we&rsquo;ll reach a sink we&rsquo;ll jump to a random note (Uniformly)
 by the formula
@@ -1948,8 +1949,8 @@ Why will it work ?? how ??
 </section>
 </section>
 <section>
-<section id="slide-org6b3df9d">
-<h2 id="org6b3df9d">A more general notation</h2>
+<section id="slide-org8cbe1f8">
+<h2 id="org8cbe1f8">A more general notation</h2>
 <p>
 note that we can write the formula more compactly like so
 </p>
@@ -1971,8 +1972,8 @@ PR(p_N)
 where &rsquo;&rsquo;&rsquo;R&rsquo;&rsquo;&rsquo; is the solution of the equation
 </p>
 </section>
-<section id="slide-orge110c6c">
-<h3 id="orge110c6c">The full equation</h3>
+<section id="slide-org96e483a">
+<h3 id="org96e483a">The full equation</h3>
 <div>
 \begin{equation}
 \mathbf{R} =
@@ -1994,8 +1995,8 @@ where &rsquo;&rsquo;&rsquo;R&rsquo;&rsquo;&rsquo; is the solution of the equatio
 
 </div>
 </section>
-<section id="slide-org87d7adc">
-<h3 id="org87d7adc">Continue</h3>
+<section id="slide-org852f90c">
+<h3 id="org852f90c">Continue</h3>
 <p>
 where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number of links outbound from page j to page i to the total number of outbound links of page j.
 </p>
@@ -2007,8 +2008,8 @@ where the adjacency function \( \ell( p_i , p_j ) \) is the ratio between number
 
 
 </section>
-<section id="slide-orgbf4740f">
-<h3 id="orgbf4740f">The Algorithm</h3>
+<section id="slide-orge8d17c9">
+<h3 id="orge8d17c9">The Algorithm</h3>
 <p>
 If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-stochastic and \( \mathbf{R} \) is a probability distribution
 </p>
@@ -2022,8 +2023,8 @@ If the matrix \( {\mathcal {M}} \) is a transition probability, i.e., column-sto
 </p>
 
 </section>
-<section id="slide-org394b3da">
-<h3 id="org394b3da">Continue</h3>
+<section id="slide-orgaa01fc8">
+<h3 id="orgaa01fc8">Continue</h3>
 <p>
 Hence PageRank  \( \mathbf{R} \) is the principal eigenvector of \( \widehat{\mathcal{M}} \). A fast and easy way to compute this is using the power method: starting with an arbitrary vector  x(0), the operator \( \widehat{\mathcal{M}} \) is applied in succession, i.e.,
 </p>
@@ -2043,8 +2044,8 @@ until
 
 
 </section>
-<section id="slide-orgf557822">
-<h3 id="orgf557822">Simple Implementation</h3>
+<section id="slide-org5df0289">
+<h3 id="org5df0289">Simple Implementation</h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"   ><code trim><span style="color: #9d0006;">import</span> numpy <span style="color: #9d0006;">as</span> np
@@ -2069,8 +2070,8 @@ v = pagerank(M, <span style="color: #8f3f71; font-weight: bold;">100</span>, <sp
 </section>
 </section>
 <section>
-<section id="slide-orge08bce9">
-<h2 id="orge08bce9">How fast does the solution converges ?</h2>
+<section id="slide-org09a8501">
+<h2 id="org09a8501">How fast does the solution converges ?</h2>
 <p class="fragment (roll-in)">
 Because of the large eigengap of the modified adjacency matrix above, the values of the PageRank eigenvector can be approximated to within a high degree of accuracy within only a &ldquo;few&rdquo; iterations.
 </p>
@@ -2090,8 +2091,8 @@ log(n)
 </section>
 </section>
 <section>
-<section id="slide-org724b1eb">
-<h2 id="org724b1eb">The End</h2>
+<section id="slide-org60a1322">
+<h2 id="org60a1322">The End</h2>
 <p>
 End !
 </p>
@@ -2099,8 +2100,8 @@ End !
 </section>
 </section>
 <section>
-<section id="slide-org6d87a6f">
-<h2 id="org6d87a6f">To delete</h2>
+<section id="slide-org08da43c">
+<h2 id="org08da43c">To delete</h2>
 <div class="column" style="float:left; width: 50%">
 <p>
 Column 1
@@ -2117,8 +2118,8 @@ Column 2
 </section>
 </section>
 <section>
-<section id="slide-org669212f">
-<h2 id="org669212f">To delete</h2>
+<section id="slide-org6039e5f">
+<h2 id="org6039e5f">To delete</h2>
 <div id="box-container">
 <div id="box-1">
 <p>
@@ -2143,8 +2144,8 @@ Box 3
 </section>
 </section>
 <section>
-<section id="slide-orgf8aff58">
-<h2 id="orgf8aff58">Some Notable code</h2>
+<section id="slide-org45d367e">
+<h2 id="org45d367e">Some Notable code</h2>
 <div class="org-src-container">
 
 <pre  class="src src-c++"   data-line-numbers='1|3'><code trim><span style="color: #8f3f71;">int</span> <span style="color: #b57614;">main</span><span style="color: #076678;">()</span>
@@ -2156,15 +2157,15 @@ Box 3
 </section>
 </section>
 <section>
-<section id="slide-org4afd40c">
-<h2 id="org4afd40c">Slide 1</h2>
+<section id="slide-orgc784219">
+<h2 id="orgc784219">Slide 1</h2>
 <ul>
 <li class="fragment roll-in">List item 1</li>
 
 </ul>
 
 
-<div id="orga81eb0f" class="figure">
+<div id="org7b5ccb3" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAb8AAABzCAYAAAAITgwJAAAABmJLR0QA/wD/AP+gvaeTAAAVTElE
 QVR4nO3de1RT9wEH8O8NSUAUhOKwigqIjProqhU7UNqeba2cAXbsgWBFFLrqmJtQZ5m2py3d5gSt
 FkQcHnyBtS0460HqwbX2nGmx0VbtqbTq0aq1qARw8pCHJCR3f8SkRF5BJTdwv59zcoDkJvkS9H7v
@@ -2271,7 +2272,7 @@ Ijvaw31+REQkOyw/IiKSHZYfERHJjhLAHqlDEBER2dGx/wPUOKAVvMRccQAAAABJRU5ErkJggg==" />
 </ul>
 
 
-<div id="orgec423e7" class="figure">
+<div id="org7d3d9c0" class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbsAAAA8CAYAAAD/qxTKAAAABmJLR0QA/wD/AP+gvaeTAAAF1ElE
 QVR4nO3dX0iTewDG8ec9ShqUCUI3IhUVRUZEFDgYdBUD6aYLHUiUEgRdRKM/wrxJiBQvkkIsg2aL
 omIGQSRCGEQQoxheGAhFIbVBhtEf06I0d66U4/Ffx73r9+53vp87X28e9qDPfr7bdNLpdFoAANir
@@ -2306,8 +2307,8 @@ PcYOAGC9vwFYBOcoiD/G2QAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org6820f03" data-auto-animate>
-<h2 id="org6820f03">Nice Code Animation</h2>
+<section id="slide-org6432de8" data-auto-animate>
+<h2 id="org6432de8">Nice Code Animation</h2>
 <div class="org-src-container">
 
 <pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
@@ -2316,8 +2317,8 @@ PcYOAGC9vwFYBOcoiD/G2QAAAABJRU5ErkJggg==" />
 
 
 </section>
-<section id="slide-orgd928a81" data-auto-animate>
-<h3 id="orgd928a81">Added value</h3>
+<section id="slide-org9cc4ab5" data-auto-animate>
+<h3 id="org9cc4ab5">Added value</h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"   data-id="foo" ><code trim>  <span style="color: #9d0006;">let</span> <span style="color: #076678;">index</span> = <span style="color: #8f3f71; font-weight: bold;">1</span>
@@ -2328,8 +2329,8 @@ PcYOAGC9vwFYBOcoiD/G2QAAAABJRU5ErkJggg==" />
 </section>
 </section>
 <section>
-<section id="slide-org000d5af">
-<h2 id="org000d5af">some equation</h2>
+<section id="slide-org20ca5fc">
+<h2 id="org20ca5fc">some equation</h2>
 <p>
 \[ \sin(x) = \frac{1}{n} \]
 </p>
